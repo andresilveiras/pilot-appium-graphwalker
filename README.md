@@ -10,6 +10,7 @@ Como executar o projeto?
 
 Pré-Requisitos:
 
+- Instalar o Java na máquina e configurar as variáveis de ambiente necessárias
 - Fazer a instalação do Android Studio e ferramentas ADB na máquina (https://developer.android.com/tools/adb)
 - Fazer a instalação do Appium na máquina - requer Node.JS (https://appium.io/docs/en/2.2/quickstart/install/)
 - Após instalar o appium, instale o driver uiautomator2 para os testes no android (https://github.com/appium/appium-uiautomator2-driver)
