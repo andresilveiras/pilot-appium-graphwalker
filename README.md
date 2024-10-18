@@ -10,10 +10,12 @@ Como executar o projeto?
 
 Pré-Requisitos:
 
-- Instalar o Java na máquina e configurar as variáveis de ambiente necessárias
+- Instale o GIT e a IDE de sua preferência (caso por algum estranho motivo você ainda não tenha feito rsrs)
+- Instalar o Java na máquina e configurar as variáveis de ambiente necessárias (https://www.oracle.com/java/technologies/downloads/)
 - Fazer a instalação do Android Studio e ferramentas ADB na máquina (https://developer.android.com/tools/adb)
 - Fazer a instalação do Appium na máquina - requer Node.JS (https://appium.io/docs/en/2.2/quickstart/install/)
 - Após instalar o appium, instale o driver uiautomator2 para os testes no android (https://github.com/appium/appium-uiautomator2-driver)
+- Opcional: Instale tambem o Appium Inspector (https://github.com/appium/appium-inspector)
 - Fazer a instalação do GraphWalker (https://graphwalker.github.io/)
 - Fazer a instalação do apk disponível no src/main/resources no dispositivo utilizado no teste (necessário habilitar a instalação de app fora da Play Store no Android)
 
