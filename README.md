@@ -59,7 +59,7 @@ How to execute the project?
 Prerequisites: 
 
 - Install GIT and an IDE of your choice (if for some strange reason you haven't done it yet)
-- NOTE: If you use a Visual Studio Code IDE, install the "Extension Pack for Java" extension from Microsoft, it has everything necessary to run this project
+- NOTE: If you choose to use Visual Studio Code IDE, install the "Extension Pack for Java" extension from Microsoft, it has everything necessary to run this project
 - Install Java on your machine and configure the environment variables (https://www.oracle.com/java/technologies/downloads/)
 - Install Android Studio and ADB tools on your machine (https://developer.android.com/tools/adb)
 - Install Appium on your machine - requires Node.JS (https://appium.io/docs/en/2.2/quickstart/install/)
