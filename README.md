@@ -44,6 +44,10 @@ OBS: Os comandos de terminal funcionam para todos os SO da máquina: Windows, Li
 - Inicie o server appium abrindo um terminal à parte, digitando o comando appium
 - Se estiver com o server do appium aberto e visualizando a tela do dispositivo, basta executar o Main.java pela IDE da sua preferência :)
 
+CRÉDITOS:
+
+Repositório do SUT utilizado: https://github.com/farmerbb/Notepad
+
 [ENG]
 
 Pilot project for the case study: use of Model-Based Testing in the automation of tests in mobile applications 
@@ -89,3 +93,7 @@ NOTE: The terminal commands work for all machine OS: Windows, Linux and Mac
 - Recommended if you are testing on a physical device: Mirror the device's screen using the Vysor app (https://www.vysor.io/)
 - Start the appium server by opening a separate terminal, writing the command appium
 - If you have the appium server open and is viewing the device's screen, just run Main.java via the IDE of your choice :)
+
+CREDITS:
+
+- Repository of the SUT used in this project: https://github.com/farmerbb/Notepad
