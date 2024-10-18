@@ -11,7 +11,7 @@ import io.appium.java_client.android.options.UiAutomator2Options;
  * Automation tool: Appium (v 2.12.0)
  * MBT Tool: GraphWalker (v4.3.3)
  * 
- * Author: André Silveira
+ * Author: André Silveira @ https://github.com/andresilveiras
  */
 
 public class Main {
@@ -37,7 +37,7 @@ public class Main {
         // Test Cases
 
     }
-    
+
     /* 
      * ******************************************* 
      * CLASS OF SETUP CAPABILITIES FOR APPIUM V2
