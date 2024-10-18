@@ -2,16 +2,16 @@
 
 Projeto piloto para o estudo de caso: uso de Teste Baseado em Modelo na automação de testes em aplicativos móveis
 
-Ferramenta de automação: Appium (v2.12.0)
-Ferramenta de TBM: GraphWalker (v4.3.3)
-Linguagem de programação utilizada: Java
+- Ferramenta de automação: Appium (v2.12.0)
+- Ferramenta de TBM: GraphWalker (v4.3.3)
+- Linguagem de programação utilizada: Java
 
 Como executar o projeto?
 
 Pré-Requisitos:
 
-- Fazer a instalação do Android Studio e ferramentas ADB na máquina
-- Fazer a instalação do Appium na máquina (requer Node.JS)
+- Fazer a instalação do Android Studio e ferramentas ADB na máquina (https://developer.android.com/tools/adb)
+- Fazer a instalação do Appium na máquina - requer Node.JS (https://appium.io/docs/en/2.2/quickstart/install/)
 - Após instalar o appium, instale o driver uiautomator2 para os testes no android (https://github.com/appium/appium-uiautomator2-driver)
 - Fazer a instalação do GraphWalker (https://graphwalker.github.io/)
 - Fazer a instalação do apk disponível no src/main/resources no dispositivo utilizado no teste (necessário habilitar a instalação de app fora da Play Store no Android)
