@@ -13,6 +13,7 @@ Como executar o projeto?
 Pré-Requisitos:
 
 - Instale o GIT e a IDE de sua preferência (caso por algum estranho motivo você ainda não tenha feito rsrs)
+- OBS: Caso utilize a IDE Visual Studio Code, instale a extensão "Extension Pack for Java", da Microsoft, possui todas as extensões necessárias para rodar este projeto 
 - Instalar o Java na máquina e configurar as variáveis de ambiente necessárias (https://www.oracle.com/java/technologies/downloads/)
 - Fazer a instalação do Android Studio e ferramentas ADB na máquina (https://developer.android.com/tools/adb)
 - Fazer a instalação do Appium na máquina - requer Node.JS (https://appium.io/docs/en/2.2/quickstart/install/)
@@ -30,7 +31,7 @@ No caso do dispositivo físico:
 - Conectar o dispositivo à máquina via USB (ativar compartilhamento de mídia)
 - Ativar a permissão do Appium ao modo debug do dispositivo
 
-IMPORTANTE: Antes de rodar o código, é necessário editar as variáveis do dispositivo na classe appiumSetup() para o dispositivo que você irá utilizar, tanto para dispositivo físico quando emulado
+IMPORTANTE: Antes de rodar o código, é necessário editar as variáveis do dispositivo na classe appiumSetup() para o dispositivo que você irá utilizar, tanto para dispositivo físico quando emulado. Está em Main.java
 
 Para executar o código:
 
@@ -38,7 +39,53 @@ OBS: Os comandos de terminal funcionam para todos os SO da máquina: Windows, Li
 
 - git clone ~ este projeto ~
 - No terminal, entre na pasta onde está o POM e digite o comando mvn install (irá instalar as dependências e compilar as classes)
-- Conecte o dispositivo à máquina (verifique pelo comando adb devices se o UDID é o mesmo que está setado nas capabilities na classe appiumSetup() )
+- Conecte o dispositivo à máquina (verifique pelo comando adb devices se o UDID é o mesmo que está setado nas capabilities na classe appiumSetup() na Main)
 - Recomendado caso esteja testando em dispositivo físico: Espelhe a tela do disposivo pelo app Vysor (https://www.vysor.io/)
 - Inicie o server appium abrindo um terminal à parte, digitando o comando appium
-- Se estiver com o server do appium aberto e visualizando a tela do dispositivo, basta executar o Main pela IDE da sua preferência (eu utilizei o VS Code) :)
+- Se estiver com o server do appium aberto e visualizando a tela do dispositivo, basta executar o Main.java pela IDE da sua preferência :)
+
+[ENG]
+
+Pilot project for the case study: use of Model-Based Testing in the automation of tests in mobile applications 
+
+- Automation tool: Appium (v2.12.0)
+- MBT tool: GraphWalker (v4.3.3)
+- Programming language: Java
+
+This project can run on Windows, Linux and Mac machines, the devices where the SUT (System Under Test) will run must be Android
+
+How to execute the project?
+
+Prerequisites: 
+
+- Install GIT and an IDE of your choice (if for some strange reason you haven't done it yet)
+- NOTE: If you use a Visual Studio Code IDE, install the "Extension Pack for Java" extension from Microsoft, it has everything necessary to run this project
+- Install Java on your machine and configure the environment variables (https://www.oracle.com/java/technologies/downloads/)
+- Install Android Studio and ADB tools on your machine (https://developer.android.com/tools/adb)
+- Install Appium on your machine - requires Node.JS (https://appium.io/docs/en/2.2/quickstart/install/)
+- After installing Appium, install the uiautomator2 driver for testing on Android (https://github.com/appium/appium-uiautomator2-driver)
+- Optional: Also install Appium Inspector (https://github.com/appium/appium-inspector)
+- Install GraphWalker (https://graphwalker.github.io/)
+- Install the apk available in src/main/resources on the device used in the test (it is necessary to enable the installation of applications outside the Play Store on Android)
+
+The test can be done both on a physical device and one emulated by Android Studio 
+
+In the case of the physical device: 
+
+- Unlock developer mode on the device (research how to do it on the device you have, it may vary from model to model)
+- Enable DEBUG mode in the developer options
+- Connect the device to the machine via USB (enable media sharing)
+- Enable Appium's permission to the device's debug mode
+
+IMPORTANT: Before running the code, it is necessary to edit the device variables in the appiumSetup() class for the device you will use, for both the physical and emulated device. It is located in Main.java
+
+To run the code: 
+
+NOTE: The terminal commands work for all machine OS: Windows, Linux and Mac 
+
+- git clone ~ this project ~
+- In the terminal, enter the folder where the POM is located and type the command mvn install (it will install the dependencies and compile the classes)
+- Connect the device to the machine (check with the command adb devices if the UDID is the same as the one defined in the capabilities in the appiumSetup() class in Main)
+- Recommended if you are testing on a physical device: Mirror the device's screen using the Vysor app (https://www.vysor.io/)
+- Start the appium server by opening a separate terminal, writing the command appium
+- If you have the appium server open and is viewing the device's screen, just run Main.java via the IDE of your choice :)
