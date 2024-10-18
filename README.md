@@ -6,6 +6,8 @@ Projeto piloto para o estudo de caso: uso de Teste Baseado em Modelo na automaç
 - Ferramenta de TBM: GraphWalker (v4.3.3)
 - Linguagem de programação utilizada: Java
 
+Este projeto pode ser executado tanto em máquinas Windows quanto Linux e Mac, os dispositivos onde irá rodar o SUT devem ser Android
+
 Como executar o projeto?
 
 Pré-Requisitos:
