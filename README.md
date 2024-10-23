@@ -38,7 +38,7 @@ Para executar o código:
 OBS: Os comandos de terminal funcionam para todos os SO da máquina: Windows, Linux e Mac
 
 - git clone ~ este projeto ~
-- No terminal, entre na pasta onde está o POM e digite o comando mvn install (irá instalar as dependências e compilar as classes)
+- No terminal, entre na pasta onde está o POM e digite o comando mvn clean install (irá instalar as dependências e compilar as classes)
 - Conecte o dispositivo à máquina (verifique pelo comando adb devices se o UDID é o mesmo que está setado nas capabilities na classe appiumSetup() na Main)
 - Recomendado caso esteja testando em dispositivo físico: Espelhe a tela do disposivo pelo app Vysor (https://www.vysor.io/)
 - Inicie o server appium abrindo um terminal à parte, digitando o comando appium
@@ -88,7 +88,7 @@ To run the code:
 NOTE: The terminal commands work for all machine OS: Windows, Linux and Mac 
 
 - git clone ~ this project ~
-- In the terminal, enter the folder where the POM is located and type the command mvn install (it will install the dependencies and compile the classes)
+- In the terminal, enter the folder where the POM is located and type the command mvn clean install (it will install the dependencies and compile the classes)
 - Connect the device to the machine (check with the command adb devices if the UDID is the same as the one defined in the capabilities in the appiumSetup() class in Main)
 - Recommended if you are testing on a physical device: Mirror the device's screen using the Vysor app (https://www.vysor.io/)
 - Start the appium server by opening a separate terminal, writing the command appium
