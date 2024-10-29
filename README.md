@@ -44,6 +44,8 @@ OBS: Os comandos de terminal funcionam para todos os SO da máquina: Windows, Li
 - Inicie o server appium abrindo um terminal à parte, digitando o comando appium
 - Se estiver com o server do appium aberto e visualizando a tela do dispositivo, basta executar o Main.java pela IDE da sua preferência :)
 
+Comando para rodar o graphwalker:  mvn org.graphwalker:graphwalker-maven-plugin:test
+
 CRÉDITOS:
 
 Repositório do SUT utilizado: https://github.com/farmerbb/Notepad

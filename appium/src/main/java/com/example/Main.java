@@ -1,14 +1,11 @@
 package com.example;
 
-/*
- * First project of mobile application test automation using MBT (Model-Based Test)
- * Automation tool: Appium (v 2.12.0)
- * MBT Tool: GraphWalker (v4.3.3)
- * 
- * Author: André Silveira @ https://github.com/andresilveiras
- */
-
+import java.io.IOException;
 import java.net.MalformedURLException;
+
+import org.graphwalker.java.test.Executor;
+import org.graphwalker.java.test.Result;
+import org.graphwalker.java.test.TestExecutor;
 
 public class Main {
   
@@ -18,7 +15,7 @@ public class Main {
      * ******************************************* 
      */
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws IOException{
 
         // Open the SUT via appium
         
@@ -30,9 +27,14 @@ public class Main {
         }
 
         // Run Tests
-
-
         
-    }
+        Executor executor = new TestExecutor(MainTest.class);
 
+        Result result = executor.execute(true);
+        if (result.hasErrors()) {
+            for (String error : result.getErrors()) {
+                System.out.println(error);
+            }
+        }
+    }
 }
