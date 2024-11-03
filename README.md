@@ -15,7 +15,7 @@ Pré-Requisitos:
 - Instale o GIT e a IDE de sua preferência (caso por algum estranho motivo você ainda não tenha feito rsrs)
 - OBS: Caso utilize a IDE Visual Studio Code, instale a extensão "Extension Pack for Java", da Microsoft, possui todas as extensões necessárias para rodar este projeto 
 - Instalar o Java na máquina e configurar as variáveis de ambiente necessárias (https://www.oracle.com/java/technologies/downloads/)
-- Instalar o Maven na máquina e onfigurar as variáveis de ambiente necessárias - FAZER APÓS TER O JAVA INSTALADO E CONFIGURADO (https://maven.apache.org/install.html)
+- Instalar o Maven na máquina e configurar as variáveis de ambiente necessárias - DEVE SER FEITO APÓS A INSTALAÇÃO E CONFIGURAÇÃO DO JAVA (https://maven.apache.org/install.html)
 - Fazer a instalação do Android Studio e ferramentas ADB na máquina (https://developer.android.com/tools/adb)
 - Fazer a instalação do Appium na máquina - requer Node.JS (https://appium.io/docs/en/2.2/quickstart/install/)
 - Após instalar o appium, instale o driver uiautomator2 para os testes no android (https://github.com/appium/appium-uiautomator2-driver)
