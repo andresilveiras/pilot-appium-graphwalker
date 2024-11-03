@@ -15,6 +15,7 @@ Pré-Requisitos:
 - Instale o GIT e a IDE de sua preferência (caso por algum estranho motivo você ainda não tenha feito rsrs)
 - OBS: Caso utilize a IDE Visual Studio Code, instale a extensão "Extension Pack for Java", da Microsoft, possui todas as extensões necessárias para rodar este projeto 
 - Instalar o Java na máquina e configurar as variáveis de ambiente necessárias (https://www.oracle.com/java/technologies/downloads/)
+- Instalar o Maven na máquina e onfigurar as variáveis de ambiente necessárias - FAZER APÓS TER O JAVA INSTALADO E CONFIGURADO (https://maven.apache.org/install.html)
 - Fazer a instalação do Android Studio e ferramentas ADB na máquina (https://developer.android.com/tools/adb)
 - Fazer a instalação do Appium na máquina - requer Node.JS (https://appium.io/docs/en/2.2/quickstart/install/)
 - Após instalar o appium, instale o driver uiautomator2 para os testes no android (https://github.com/appium/appium-uiautomator2-driver)
@@ -67,6 +68,7 @@ Prerequisites:
 - Install GIT and an IDE of your choice (if for some strange reason you haven't done it yet)
 - NOTE: If you choose to use Visual Studio Code IDE, install the "Extension Pack for Java" extension from Microsoft, it has everything necessary to run this project
 - Install Java on your machine and configure the environment variables (https://www.oracle.com/java/technologies/downloads/)
+- Install Maven on your machine and configure the environment variables - NEEDS TO BE DONE AFTER JAVA INSTALLATION (https://maven.apache.org/install.html)
 - Install Android Studio and ADB tools on your machine (https://developer.android.com/tools/adb)
 - Install Appium on your machine - requires Node.JS (https://appium.io/docs/en/2.2/quickstart/install/)
 - After installing Appium, install the uiautomator2 driver for testing on Android (https://github.com/appium/appium-uiautomator2-driver)
