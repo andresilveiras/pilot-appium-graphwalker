@@ -32,7 +32,7 @@ No caso do dispositivo físico:
 - Conectar o dispositivo à máquina via USB (ativar compartilhamento de mídia)
 - Ativar a permissão do Appium ao modo debug do dispositivo
 
-IMPORTANTE: Antes de rodar o código, é necessário editar as variáveis do dispositivo na classe appiumSetup() para o dispositivo que você irá utilizar, tanto para dispositivo físico quando emulado. Está em Main.java
+IMPORTANTE: Antes de rodar o código, é necessário editar as variáveis para o dispositivo que você irá utilizar, tanto para dispositivo físico quando emulado. As variáveis estão na classe DriverRunner.java
 
 Para executar o código:
 
@@ -85,7 +85,7 @@ In the case of using physical device:
 - Connect the device to the machine via USB (enable media sharing)
 - Enable Appium's permission to the device's debug mode
 
-IMPORTANT: Before running the code, it is necessary to edit the device variables in the appiumSetup() class for the device you will use, for both the physical and emulated device. It is located in Main.java
+IMPORTANT: Before running the code, it is necessary to edit the device variables for the device you will use, for both the physical and emulated device. The variables are located in DriverRunner.java
 
 To run the code: 
 
