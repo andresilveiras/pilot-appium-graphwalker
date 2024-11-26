@@ -4,7 +4,7 @@ Projeto piloto para o estudo de caso: uso de Teste Baseado em Modelo na automaç
 
 - Ferramenta de automação: Appium (v2.12.0)
 - Ferramenta de TBM: GraphWalker (v4.3.3)
-- Linguagem de programação utilizada: Java
+- Linguagem de programação utilizada: Java (jdk v21.0.5)
 
 Este projeto pode ser executado tanto em máquinas Windows quanto Linux e Mac, os dispositivos onde irá rodar o SUT (System Under Test) devem ser Android
 
@@ -58,7 +58,7 @@ Pilot project for the case study: use of Model-Based Testing in test automation 
 
 - Automation tool: Appium (v2.12.0)
 - MBT tool: GraphWalker (v4.3.3)
-- Programming language: Java
+- Programming language: Java (jdk v21.0.5)
 
 This project can run on Windows, Linux and Mac machines, the devices where the SUT (System Under Test) will run must be Android
 
