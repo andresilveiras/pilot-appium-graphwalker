@@ -6,7 +6,7 @@ import org.graphwalker.java.annotation.Edge;
 import org.graphwalker.java.annotation.Model;
 import org.graphwalker.java.annotation.Vertex;
 
-@Model(file = "com/example/NotepadTestModel_v1.json")
+@Model(file = "src/main/resources/NotepadTestModel_v1.json")
 public interface NotepadTest {
 
      /* 

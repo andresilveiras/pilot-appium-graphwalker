@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<testsuites time="0.0" tests="1" failures="0" errors="1">
+    <testsuite name="GraphWalker" tests="1" failures="0" errors="1" time="0.0" timestamp="2024-11-26T14:31:12">
+        <properties>
+            <property name="classworlds.conf" value="/usr/share/maven/bin/m2.conf"/>
+            <property name="env.ANDROID_HOME" value="/usr/lib/android-sdk/"/>
+            <property name="env.CHROME_DESKTOP" value="code.desktop"/>
+            <property name="env.COLORTERM" value="truecolor"/>
+            <property name="env.DBUS_SESSION_BUS_ADDRESS" value="unix:path=/run/user/1000/bus"/>
+            <property name="env.DEBUGINFOD_URLS" value="https://debuginfod.ubuntu.com "/>
+            <property name="env.DESKTOP_SESSION" value="ubuntu"/>
+            <property name="env.DISPLAY" value=":0"/>
+            <property name="env.GDK_BACKEND" value="x11"/>
+            <property name="env.GDMSESSION" value="ubuntu"/>
+            <property name="env.GIO_LAUNCHED_DESKTOP_FILE" value="/usr/share/applications/code.desktop"/>
+            <property name="env.GIO_LAUNCHED_DESKTOP_FILE_PID" value="3604"/>
+            <property name="env.GIT_ASKPASS" value="/usr/share/code/resources/app/extensions/git/dist/askpass.sh"/>
+            <property name="env.GJS_DEBUG_OUTPUT" value="stderr"/>
+            <property name="env.GJS_DEBUG_TOPICS" value="JS ERROR;JS LOG"/>
+            <property name="env.GNOME_DESKTOP_SESSION_ID" value="this-is-deprecated"/>
+            <property name="env.GNOME_SETUP_DISPLAY" value=":1"/>
+            <property name="env.GNOME_SHELL_SESSION_MODE" value="ubuntu"/>
+            <property name="env.GSM_SKIP_SSH_AGENT_WORKAROUND" value="true"/>
+            <property name="env.GTK_MODULES" value="gail:atk-bridge"/>
+            <property name="env.HOME" value="/home/andre"/>
+            <property name="env.IM_CONFIG_CHECK_ENV" value="1"/>
+            <property name="env.IM_CONFIG_PHASE" value="1"/>
+            <property name="env.INVOCATION_ID" value="809429a58d2e4f2cbf9eb5f322eaec90"/>
+            <property name="env.JAVA_HOME" value="/usr/lib/jvm/java-21-openjdk-amd64"/>
+            <property name="env.JOURNAL_STREAM" value="8:15991"/>
+            <property name="env.LANG" value="pt_BR.UTF-8"/>
+            <property name="env.LESSCLOSE" value="/usr/bin/lesspipe %s %s"/>
+            <property name="env.LESSOPEN" value="| /usr/bin/lesspipe %s"/>
+            <property name="env.LOGNAME" value="andre"/>
+            <property name="env.LS_COLORS" value="rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:"/>
+            <property name="env.MANAGERPID" value="1933"/>
+            <property name="env.MAVEN_CMD_LINE_ARGS" value=" org.graphwalker:graphwalker-maven-plugin:test"/>
+            <property name="env.MAVEN_PROJECTBASEDIR" value="/home/andre/Documentos/GitHub/pilot-appium-graphwalker/appium"/>
+            <property name="env.MEMORY_PRESSURE_WATCH" value="/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@wayland.service/memory.pressure"/>
+            <property name="env.MEMORY_PRESSURE_WRITE" value="c29tZSAyMDAwMDAgMjAwMDAwMAA="/>
+            <property name="env.OLDPWD" value="/home/andre/Documentos/GitHub/pilot-appium-graphwalker/appium"/>
+            <property name="env.ORIGINAL_XDG_CURRENT_DESKTOP" value="ubuntu:GNOME"/>
+            <property name="env.PATH" value="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/apache-maven-3.9.9/bin:/usr/lib/android-sdk/platform-tools/:/usr/lib/android-sdk/tools/:/snap/bin"/>
+            <property name="env.PWD" value="/home/andre/Documentos/GitHub/pilot-appium-graphwalker/appium"/>
+            <property name="env.QT_ACCESSIBILITY" value="1"/>
+            <property name="env.QT_IM_MODULE" value="ibus"/>
+            <property name="env.SESSION_MANAGER" value="local/Andre-Laptop-Ubuntu:@/tmp/.ICE-unix/2183,unix/Andre-Laptop-Ubuntu:/tmp/.ICE-unix/2183"/>
+            <property name="env.SHELL" value="/bin/bash"/>
+            <property name="env.SHLVL" value="1"/>
+            <property name="env.SSH_AUTH_SOCK" value="/run/user/1000/keyring/ssh"/>
+            <property name="env.SYSTEMD_EXEC_PID" value="2225"/>
+            <property name="env.TERM" value="xterm-256color"/>
+            <property name="env.TERM_PROGRAM" value="vscode"/>
+            <property name="env.TERM_PROGRAM_VERSION" value="1.95.3"/>
+            <property name="env.USER" value="andre"/>
+            <property name="env.USERNAME" value="andre"/>
+            <property name="env.VSCODE_GIT_ASKPASS_EXTRA_ARGS" value=""/>
+            <property name="env.VSCODE_GIT_ASKPASS_MAIN" value="/usr/share/code/resources/app/extensions/git/dist/askpass-main.js"/>
+            <property name="env.VSCODE_GIT_ASKPASS_NODE" value="/usr/share/code/code"/>
+            <property name="env.VSCODE_GIT_IPC_HANDLE" value="/run/user/1000/vscode-git-7d9b711ae1.sock"/>
+            <property name="env.WAYLAND_DISPLAY" value="wayland-0"/>
+            <property name="env.XAUTHORITY" value="/run/user/1000/.mutter-Xwaylandauth.P74OX2"/>
+            <property name="env.XDG_CONFIG_DIRS" value="/etc/xdg/xdg-ubuntu:/etc/xdg"/>
+            <property name="env.XDG_CURRENT_DESKTOP" value="Unity"/>
+            <property name="env.XDG_DATA_DIRS" value="/usr/share/ubuntu:/usr/share/gnome:/home/andre/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop"/>
+            <property name="env.XDG_MENU_PREFIX" value="gnome-"/>
+            <property name="env.XDG_RUNTIME_DIR" value="/run/user/1000"/>
+            <property name="env.XDG_SESSION_CLASS" value="user"/>
+            <property name="env.XDG_SESSION_DESKTOP" value="ubuntu"/>
+            <property name="env.XDG_SESSION_TYPE" value="wayland"/>
+            <property name="env.XMODIFIERS" value="@im=ibus"/>
+            <property name="env._" value="/usr/bin/mvn"/>
+            <property name="file.encoding" value="UTF-8"/>
+            <property name="file.separator" value="/"/>
+            <property name="jansi.mode" value="force"/>
+            <property name="java.class.path" value="/usr/share/maven/boot/plexus-classworlds-2.x.jar"/>
+            <property name="java.class.version" value="65.0"/>
+            <property name="java.home" value="/usr/lib/jvm/java-21-openjdk-amd64"/>
+            <property name="java.io.tmpdir" value="/tmp"/>
+            <property name="java.library.path" value="/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib"/>
+            <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+            <property name="java.runtime.version" value="21.0.5+11-Ubuntu-1ubuntu124.04"/>
+            <property name="java.specification.name" value="Java Platform API Specification"/>
+            <property name="java.specification.vendor" value="Oracle Corporation"/>
+            <property name="java.specification.version" value="21"/>
+            <property name="java.vendor" value="Ubuntu"/>
+            <property name="java.vendor.url" value="https://ubuntu.com/"/>
+            <property name="java.vendor.url.bug" value="https://bugs.launchpad.net/ubuntu/+source/openjdk-21"/>
+            <property name="java.version" value="21.0.5"/>
+            <property name="java.version.date" value="2024-10-15"/>
+            <property name="java.vm.compressedOopsMode" value="32-bit"/>
+            <property name="java.vm.info" value="mixed mode, sharing"/>
+            <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+            <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+            <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+            <property name="java.vm.specification.version" value="21"/>
+            <property name="java.vm.vendor" value="Ubuntu"/>
+            <property name="java.vm.version" value="21.0.5+11-Ubuntu-1ubuntu124.04"/>
+            <property name="jdk.debug" value="release"/>
+            <property name="library.jansi.path" value="/usr/share/maven/lib/jansi-native"/>
+            <property name="line.separator" value="&#10;"/>
+            <property name="maven.build.version" value="Apache Maven 3.8.7"/>
+            <property name="maven.conf" value="/usr/share/maven/conf"/>
+            <property name="maven.home" value="/usr/share/maven"/>
+            <property name="maven.multiModuleProjectDirectory" value="/home/andre/Documentos/GitHub/pilot-appium-graphwalker/appium"/>
+            <property name="maven.version" value="3.8.7"/>
+            <property name="native.encoding" value="UTF-8"/>
+            <property name="os.arch" value="amd64"/>
+            <property name="os.name" value="Linux"/>
+            <property name="os.version" value="6.8.0-49-generic"/>
+            <property name="path.separator" value=":"/>
+            <property name="stderr.encoding" value="UTF-8"/>
+            <property name="stdout.encoding" value="UTF-8"/>
+            <property name="sun.arch.data.model" value="64"/>
+            <property name="sun.boot.library.path" value="/usr/lib/jvm/java-21-openjdk-amd64/lib"/>
+            <property name="sun.cpu.endian" value="little"/>
+            <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+            <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher org.graphwalker:graphwalker-maven-plugin:test"/>
+            <property name="sun.java.launcher" value="SUN_STANDARD"/>
+            <property name="sun.jnu.encoding" value="UTF-8"/>
+            <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+            <property name="user.country" value="BR"/>
+            <property name="user.dir" value="/home/andre/Documentos/GitHub/pilot-appium-graphwalker/appium"/>
+            <property name="user.home" value="/home/andre"/>
+            <property name="user.language" value="pt"/>
+            <property name="user.name" value="andre"/>
+        </properties>
+        <testcase name="MainTest" time="0.0" classname="com.example.MainTest">
+            <error type="java.lang.NullPointerException" message="Cannot invoke &quot;io.appium.java_client.android.AndroidDriver.findElement(org.openqa.selenium.By)&quot; because &quot;this.driver&quot; is null">
+                java.lang.NullPointerException: Cannot invoke "io.appium.java_client.android.AndroidDriver.findElement(org.openqa.selenium.By)" because "this.driver" is null
+                	at com.example.MainTest.v_Start(MainTest.java:30)
+                	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+                	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+                	at org.graphwalker.core.machine.ExecutionContext.execute(ExecutionContext.java:277)
+                	at org.graphwalker.core.machine.SimpleMachine.execute(SimpleMachine.java:283)
+                	at org.graphwalker.core.machine.SimpleMachine.getNextStep(SimpleMachine.java:106)
+                	at org.graphwalker.java.test.TestExecutor.execute(TestExecutor.java:241)
+                	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+                	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+                	at org.graphwalker.java.test.Reflections.invoke(Reflections.java:74)
+                	at org.graphwalker.java.test.Reflector.execute(Reflector.java:123)
+                	at org.graphwalker.maven.plugin.TestMojo.execute(TestMojo.java:154)
+                	at org.apache.maven.plugin.DefaultBuildPluginManager.executeMojo(DefaultBuildPluginManager.java:137)
+                	at org.apache.maven.lifecycle.internal.MojoExecutor.doExecute2(MojoExecutor.java:370)
+                	at org.apache.maven.lifecycle.internal.MojoExecutor.doExecute(MojoExecutor.java:351)
+                	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:215)
+                	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:171)
+                	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:163)
+                	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:117)
+                	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:81)
+                	at org.apache.maven.lifecycle.internal.builder.singlethreaded.SingleThreadedBuilder.build(SingleThreadedBuilder.java:56)
+                	at org.apache.maven.lifecycle.internal.LifecycleStarter.execute(LifecycleStarter.java:128)
+                	at org.apache.maven.DefaultMaven.doExecute(DefaultMaven.java:298)
+                	at org.apache.maven.DefaultMaven.doExecute(DefaultMaven.java:192)
+                	at org.apache.maven.DefaultMaven.execute(DefaultMaven.java:105)
+                	at org.apache.maven.cli.MavenCli.execute(MavenCli.java:960)
+                	at org.apache.maven.cli.MavenCli.doMain(MavenCli.java:293)
+                	at org.apache.maven.cli.MavenCli.main(MavenCli.java:196)
+                	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+                	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+                	at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced(Launcher.java:283)
+                	at org.codehaus.plexus.classworlds.launcher.Launcher.launch(Launcher.java:226)
+                	at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode(Launcher.java:407)
+                	at org.codehaus.plexus.classworlds.launcher.Launcher.main(Launcher.java:348)
+</error>
+        </testcase>
+    </testsuite>
+</testsuites>
