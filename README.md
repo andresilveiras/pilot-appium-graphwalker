@@ -4,7 +4,7 @@ Projeto piloto para o estudo de caso: uso de Teste Baseado em Modelo na automaç
 
 - Ferramenta de automação: Appium (v2.12.0)
 - Ferramenta de TBM: GraphWalker (v4.3.3)
-- Linguagem de programação utilizada: Java
+- Linguagem de programação utilizada: Java (jdk v21.0.5)
 
 Este projeto pode ser executado tanto em máquinas Windows quanto Linux e Mac, os dispositivos onde irá rodar o SUT (System Under Test) devem ser Android
 
@@ -15,6 +15,7 @@ Pré-Requisitos:
 - Instale o GIT e a IDE de sua preferência (caso por algum estranho motivo você ainda não tenha feito rsrs)
 - OBS: Caso utilize a IDE Visual Studio Code, instale a extensão "Extension Pack for Java", da Microsoft, possui todas as extensões necessárias para rodar este projeto 
 - Instalar o Java na máquina e configurar as variáveis de ambiente necessárias (https://www.oracle.com/java/technologies/downloads/)
+- NOTA: Na minha máquina apenas funcionou com a versão 21 do Java, versões posteriores a 22 causa falha de instanciação, então recomendo o uso da versão 21 do jdk
 - Instalar o Maven na máquina e configurar as variáveis de ambiente necessárias - DEVE SER FEITO APÓS A INSTALAÇÃO E CONFIGURAÇÃO DO JAVA (https://maven.apache.org/install.html)
 - Fazer a instalação do Android Studio e ferramentas ADB na máquina (https://developer.android.com/tools/adb)
 - Fazer a instalação do Appium na máquina - requer Node.JS (https://appium.io/docs/en/2.2/quickstart/install/)
@@ -39,8 +40,11 @@ Para executar o código:
 OBS: Os comandos de terminal funcionam para todos os SO da máquina: Windows, Linux e Mac
 
 - git clone ~ este projeto ~
+- Entre na classe 'DriverRunner.java' e altere a variável appPath com o diretório onde você clonou o repositório
+- Conecte o dispositivo à máquina, ou abra o dispositivo no emulador, e rode o comando 'adb devices' no terminal
+- Altere as variáveis String deviceName ; String deviceUdid ; String deviceOSVersion com os dados do aparelho que irá utilizar
+- Salve as alterações (Ctrl + S)
 - No terminal, entre na pasta onde está o POM e digite o comando mvn clean install (irá instalar as dependências e compilar as classes)
-- Conecte o dispositivo à máquina (verifique pelo comando adb devices se o UDID é o mesmo que está setado nas capabilities do appium na classe DriverRunner.java)
 - Recomendado caso esteja testando em dispositivo físico: Espelhe a tela do disposivo pelo app Vysor (https://www.vysor.io/)
 - Inicie o server appium abrindo um terminal à parte, digitando o comando appium
 - Se estiver com o server do appium aberto e visualizando a tela do dispositivo, basta executar o Main.java pela IDE da sua preferência :)
@@ -57,7 +61,7 @@ Pilot project for the case study: use of Model-Based Testing in test automation 
 
 - Automation tool: Appium (v2.12.0)
 - MBT tool: GraphWalker (v4.3.3)
-- Programming language: Java
+- Programming language: Java (jdk v21.0.5)
 
 This project can run on Windows, Linux and Mac machines, the devices where the SUT (System Under Test) will run must be Android
 
@@ -68,6 +72,7 @@ Prerequisites:
 - Install GIT and an IDE of your choice (if for some strange reason you haven't done it yet)
 - NOTE: If you choose to use Visual Studio Code IDE, install the "Extension Pack for Java" extension from Microsoft, it has everything necessary to run this project
 - Install Java on your machine and configure the environment variables (https://www.oracle.com/java/technologies/downloads/)
+- NOTE: In my machine, posterior versions than 22 of Java caused instantiation errors, so I recommend the use of version 21 of jdk
 - Install Maven on your machine and configure the environment variables - NEEDS TO BE DONE AFTER JAVA INSTALLATION (https://maven.apache.org/install.html)
 - Install Android Studio and ADB tools on your machine (https://developer.android.com/tools/adb)
 - Install Appium on your machine - requires Node.JS (https://appium.io/docs/en/2.2/quickstart/install/)
@@ -92,11 +97,16 @@ To run the code:
 NOTE: The terminal commands work for all machine OS: Windows, Linux and Mac 
 
 - git clone ~ this project ~
-- In the terminal, enter the folder where the POM is located and type the command mvn clean install (it will install the dependencies and compile the classes)
-- Connect the device to the machine (check with the command adb devices if the UDID is the same as the one defined for appium capabilities in class DriverRunner.java)
-- Recommended if you are testing on a physical device: Mirror the device's screen using the Vysor app (https://www.vysor.io/)
-- Start the appium server by opening a separate terminal, writing the command appium
-- If you have the appium server open and is viewing the device's screen, just run Main.java via the IDE of your choice :)
+- Enter on 'DriverRunner.java' class and change the appPath variable updating it with the directory where you cloned the repository
+- Connect the device to the machine, or open the device in the emulator, and run the 'adb devices' command in the terminal
+- Change the variables String deviceName ; String deviceUdid ; String deviceOSVersion with the data of the device you will use
+- Save changes (Ctrl + S)
+- In the terminal, go to the folder where the POM file is located and type the command mvn clean install (it will install the dependencies and compile the classes)
+- Recommended if you are testing on a physical device: Mirror the device's screen through the Vysor app (https://www.vysor.io/)
+- Start the appium server by opening a separate terminal and typing the command appium 
+- If you have appium server running and are viewing the device's screen, just run Main.java through the IDE of your choice :)
+
+Command to run via graphwalker plugin:  mvn org.graphwalker:graphwalker-maven-plugin:test
 
 CREDITS:
 
