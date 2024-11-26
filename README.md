@@ -15,6 +15,7 @@ Pré-Requisitos:
 - Instale o GIT e a IDE de sua preferência (caso por algum estranho motivo você ainda não tenha feito rsrs)
 - OBS: Caso utilize a IDE Visual Studio Code, instale a extensão "Extension Pack for Java", da Microsoft, possui todas as extensões necessárias para rodar este projeto 
 - Instalar o Java na máquina e configurar as variáveis de ambiente necessárias (https://www.oracle.com/java/technologies/downloads/)
+- NOTA: Na minha máquina apenas funcionou com a versão 21 do Java, versões posteriores a 22 causa falha de instanciação, então recomendo o uso da versão 21 do jdk
 - Instalar o Maven na máquina e configurar as variáveis de ambiente necessárias - DEVE SER FEITO APÓS A INSTALAÇÃO E CONFIGURAÇÃO DO JAVA (https://maven.apache.org/install.html)
 - Fazer a instalação do Android Studio e ferramentas ADB na máquina (https://developer.android.com/tools/adb)
 - Fazer a instalação do Appium na máquina - requer Node.JS (https://appium.io/docs/en/2.2/quickstart/install/)
@@ -68,6 +69,7 @@ Prerequisites:
 - Install GIT and an IDE of your choice (if for some strange reason you haven't done it yet)
 - NOTE: If you choose to use Visual Studio Code IDE, install the "Extension Pack for Java" extension from Microsoft, it has everything necessary to run this project
 - Install Java on your machine and configure the environment variables (https://www.oracle.com/java/technologies/downloads/)
+- NOTE: In my machine, posterior versions than 22 of Java caused instantiation errors, so I recommend the use of version 21 of jdk
 - Install Maven on your machine and configure the environment variables - NEEDS TO BE DONE AFTER JAVA INSTALLATION (https://maven.apache.org/install.html)
 - Install Android Studio and ADB tools on your machine (https://developer.android.com/tools/adb)
 - Install Appium on your machine - requires Node.JS (https://appium.io/docs/en/2.2/quickstart/install/)
