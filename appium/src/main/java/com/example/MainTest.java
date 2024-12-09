@@ -12,6 +12,7 @@ import io.appium.java_client.android.AndroidDriver;
 public class MainTest extends ExecutionContext implements NotepadTest{
 
     AndroidDriver driver;
+    Navigation navigation = new Navigation();
 
     /* 
     * ******************************************* 
@@ -56,6 +57,10 @@ public class MainTest extends ExecutionContext implements NotepadTest{
 
         try{
             driver = DriverRunner.getDriver();
+
+            navigation.CheckFirstDialog();
+            navigation.CreateNewNote();
+
         }catch(MalformedURLException exc){
             System.out.println(exc.getCause());
             System.out.println(exc.getMessage());
@@ -70,6 +75,10 @@ public class MainTest extends ExecutionContext implements NotepadTest{
 
         try{
             driver = DriverRunner.getDriver();
+
+            navigation.CheckFirstDialog();
+            navigation.IsListNotesEmpty();
+
         }catch(MalformedURLException exc){
             System.out.println(exc.getCause());
             System.out.println(exc.getMessage());
@@ -85,6 +94,10 @@ public class MainTest extends ExecutionContext implements NotepadTest{
 
         try{
             driver = DriverRunner.getDriver();
+
+            navigation.CheckFirstDialog();
+            navigation.SelectNote();
+
         }catch(MalformedURLException exc){
             System.out.println(exc.getCause());
             System.out.println(exc.getMessage());
@@ -99,6 +112,11 @@ public class MainTest extends ExecutionContext implements NotepadTest{
 
         try{
             driver = DriverRunner.getDriver();
+
+            navigation.CheckFirstDialog();
+            navigation.SelectNote();
+            navigation.EditNote();
+
         }catch(MalformedURLException exc){
             System.out.println(exc.getCause());
             System.out.println(exc.getMessage());
@@ -122,6 +140,10 @@ public class MainTest extends ExecutionContext implements NotepadTest{
 
         try{
             driver = DriverRunner.getDriver();
+            
+            navigation.CheckFirstDialog();
+            navigation.IsListNotesEmpty();
+
         }catch(MalformedURLException exc){
             System.out.println(exc.getCause());
             System.out.println(exc.getMessage());
@@ -136,6 +158,10 @@ public class MainTest extends ExecutionContext implements NotepadTest{
 
         try{
             driver = DriverRunner.getDriver();
+
+            navigation.CheckFirstDialog();
+            navigation.CreateNewNote();
+
         }catch(MalformedURLException exc){
             System.out.println(exc.getCause());
             System.out.println(exc.getMessage());
@@ -150,6 +176,11 @@ public class MainTest extends ExecutionContext implements NotepadTest{
 
         try{
             driver = DriverRunner.getDriver();
+    
+            navigation.CheckFirstDialog();
+            navigation.CreateNewNote();
+            navigation.GoBack();
+
         }catch(MalformedURLException exc){
             System.out.println(exc.getCause());
             System.out.println(exc.getMessage());
@@ -164,6 +195,11 @@ public class MainTest extends ExecutionContext implements NotepadTest{
 
         try{
             driver = DriverRunner.getDriver();
+
+            navigation.CheckFirstDialog();
+            navigation.CreateNewNote();
+            navigation.DiscardChanges();
+
         }catch(MalformedURLException exc){
             System.out.println(exc.getCause());
             System.out.println(exc.getMessage());
@@ -178,6 +214,13 @@ public class MainTest extends ExecutionContext implements NotepadTest{
 
         try{
             driver = DriverRunner.getDriver();
+
+            String text = "Teste 1";
+            navigation.CheckFirstDialog();
+            navigation.CreateNewNote();
+            navigation.EnterText(text);
+            navigation.SaveChanges();
+
         }catch(MalformedURLException exc){
             System.out.println(exc.getCause());
             System.out.println(exc.getMessage());
@@ -194,6 +237,10 @@ public class MainTest extends ExecutionContext implements NotepadTest{
 
         try{
             driver = DriverRunner.getDriver();
+
+            navigation.CheckFirstDialog();
+            navigation.SelectNote();
+
         }catch(MalformedURLException exc){
             System.out.println(exc.getCause());
             System.out.println(exc.getMessage());
@@ -208,6 +255,11 @@ public class MainTest extends ExecutionContext implements NotepadTest{
 
         try{
             driver = DriverRunner.getDriver();
+
+            navigation.CheckFirstDialog();
+            navigation.SelectNote();
+            navigation.GoBack();
+
         }catch(MalformedURLException exc){
             System.out.println(exc.getCause());
             System.out.println(exc.getMessage());
@@ -222,6 +274,11 @@ public class MainTest extends ExecutionContext implements NotepadTest{
 
         try{
             driver = DriverRunner.getDriver();
+
+            navigation.CheckFirstDialog();
+            navigation.SelectNote();
+            navigation.DiscardChanges();
+
         }catch(MalformedURLException exc){
             System.out.println(exc.getCause());
             System.out.println(exc.getMessage());
@@ -236,6 +293,11 @@ public class MainTest extends ExecutionContext implements NotepadTest{
 
         try{
             driver = DriverRunner.getDriver();
+
+            navigation.CheckFirstDialog();
+            navigation.SelectNote();
+            navigation.EditNote();
+
         }catch(MalformedURLException exc){
             System.out.println(exc.getCause());
             System.out.println(exc.getMessage());
@@ -253,6 +315,12 @@ public class MainTest extends ExecutionContext implements NotepadTest{
 
         try{
             driver = DriverRunner.getDriver();
+
+            navigation.CheckFirstDialog();
+            navigation.SelectNote();
+            navigation.EditNote();
+            navigation.GoBack();
+
         }catch(MalformedURLException exc){
             System.out.println(exc.getCause());
             System.out.println(exc.getMessage());
@@ -267,6 +335,12 @@ public class MainTest extends ExecutionContext implements NotepadTest{
 
         try{
             driver = DriverRunner.getDriver();
+
+            navigation.CheckFirstDialog();
+            navigation.SelectNote();
+            navigation.EditNote();
+            navigation.DiscardChanges();
+
         }catch(MalformedURLException exc){
             System.out.println(exc.getCause());
             System.out.println(exc.getMessage());
@@ -281,6 +355,14 @@ public class MainTest extends ExecutionContext implements NotepadTest{
 
         try{
             driver = DriverRunner.getDriver();
+
+            String text = "Teste 2";
+            navigation.CheckFirstDialog();
+            navigation.SelectNote();
+            navigation.EditNote();
+            navigation.EnterText(text);
+            navigation.SaveChanges();
+
         }catch(MalformedURLException exc){
             System.out.println(exc.getCause());
             System.out.println(exc.getMessage());

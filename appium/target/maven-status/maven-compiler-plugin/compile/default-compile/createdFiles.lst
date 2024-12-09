@@ -1,5 +1,6 @@
 NotepadTest.class
 com\example\DriverRunner.class
 com\example\Main.class
+com\example\Navigation.class
 com\example\MainTest.class
 com\example\NotepadTest.class
