@@ -41,15 +41,15 @@ OBS: Os comandos de terminal funcionam para todos os SO da máquina: Windows, Li
 
 - git clone ~ este projeto ~
 - Entre na classe 'DriverRunner.java' e altere a variável appPath com o diretório onde você clonou o repositório
-- Conecte o dispositivo à máquina, ou abra o dispositivo no emulador, e rode o comando 'adb devices' no terminal
+- Conecte o dispositivo à máquina, ou abra o dispositivo no emulador, e rode o comando `adb devices` no terminal
 - Altere as variáveis String deviceName ; String deviceUdid ; String deviceOSVersion com os dados do aparelho que irá utilizar
 - Salve as alterações (Ctrl + S)
-- No terminal, entre na pasta onde está o POM e digite o comando mvn clean install (irá instalar as dependências e compilar as classes)
+- No terminal, entre na pasta onde está o POM e digite o comando `mvn clean install` (irá instalar as dependências e compilar as classes)
 - Recomendado caso esteja testando em dispositivo físico: Espelhe a tela do disposivo pelo app Vysor (https://www.vysor.io/)
-- Inicie o server appium abrindo um terminal à parte, digitando o comando appium
+- Inicie o server appium abrindo um terminal à parte, digitando o comando `appium --keep-alive-timeout 180`
 - Se estiver com o server do appium aberto e visualizando a tela do dispositivo, basta executar o Main.java pela IDE da sua preferência :)
 
-Comando para rodar o graphwalker:  mvn org.graphwalker:graphwalker-maven-plugin:test
+Comando para rodar o graphwalker:  `mvn org.graphwalker:graphwalker-maven-plugin:test`
 
 CRÉDITOS:
 
@@ -98,15 +98,15 @@ NOTE: The terminal commands work for all machine OS: Windows, Linux and Mac
 
 - git clone ~ this project ~
 - Enter on 'DriverRunner.java' class and change the appPath variable updating it with the directory where you cloned the repository
-- Connect the device to the machine, or open the device in the emulator, and run the 'adb devices' command in the terminal
+- Connect the device to the machine, or open the device in the emulator, and run command `adb devices`  in the terminal
 - Change the variables String deviceName ; String deviceUdid ; String deviceOSVersion with the data of the device you will use
 - Save changes (Ctrl + S)
-- In the terminal, go to the folder where the POM file is located and type the command mvn clean install (it will install the dependencies and compile the classes)
+- In the terminal, go to the folder where the POM file is located and run command `mvn clean install` (it will install the dependencies and compile the classes)
 - Recommended if you are testing on a physical device: Mirror the device's screen through the Vysor app (https://www.vysor.io/)
-- Start the appium server by opening a separate terminal and typing the command appium 
+- Start the appium server by opening a separate terminal and run command `appium --keep-alive-timeout 180` 
 - If you have appium server running and are viewing the device's screen, just run Main.java through the IDE of your choice :)
 
-Command to run via graphwalker plugin:  mvn org.graphwalker:graphwalker-maven-plugin:test
+Command to run via graphwalker plugin:  `mvn org.graphwalker:graphwalker-maven-plugin:test`
 
 CREDITS:
 
