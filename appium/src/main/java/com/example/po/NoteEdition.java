@@ -93,7 +93,7 @@ public class NoteEdition extends BasePage {
 
     // Save --> Go to NOTE DETAILS
 
-    public NoteDetails SaveNewNote(){
+    public NoteDetails SaveEditedNote(){
         System.out.println("Clicking to save note...");
         saveButton.click();
         return new NoteDetails(d);

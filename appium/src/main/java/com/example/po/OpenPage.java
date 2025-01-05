@@ -1,19 +1,26 @@
 package com.example.po;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.remote.RemoteWebElement;
 
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.pagefactory.AndroidFindBy;
+
 
 public class OpenPage extends BasePage {
 
     // Driver instanciation
     public OpenPage(AndroidDriver d) {
         super(d);
+        System.out.println("I'm on Open Page");
+        if(d == null){
+            System.out.println("Driver is null");
+        }else{
+            System.out.println("Driver is NOT null");
+        }
     }
-
-    // PAGE ELEMENTS
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Bem-vindo ao Notepad!\n"
+/*
+    
+    @FindBy(xpath = "//android.widget.TextView[@text=\"Bem-vindo ao Notepad!\n"
             + //
             "\n"
             + //
@@ -25,6 +32,14 @@ public class OpenPage extends BasePage {
 
     @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.Button\")")
     RemoteWebElement closeDialogButton;
+
+*/
+
+    // PAGE ELEMENTS
+
+    RemoteWebElement firstAccessDialogText = (RemoteWebElement)d.findElement(By.xpath("//android.widget.TextView[@text=\"Notepad\"]"));
+    RemoteWebElement androidDialog = (RemoteWebElement)d.findElement(By.xpath("//android.view.ViewGroup/android.view.View/android.view.View/android.view.View"));
+    RemoteWebElement closeDialogButton = (RemoteWebElement)d.findElement(By.xpath("//android.widget.Button"));
 
     // PAGE ACTIONS
     public ListNotes checkFirstDialog() {
@@ -38,5 +53,4 @@ public class OpenPage extends BasePage {
         }
         return new ListNotes(d);
     }
-
 }

@@ -29,8 +29,13 @@ public class MainTest extends ExecutionContext implements NotepadTest {
         System.out.println("I'm on vertex START");
 
         try {
-           // driver = DriverRunner.getDriver();
-            OpenPage openPage = new OpenPage(DriverRunner.getDriver());
+            driver = DriverRunner.createDriver();
+            if(driver == null){
+                System.out.println("Driver is null");
+            }else{
+                System.out.println("Driver is NOT null");
+            }
+            OpenPage openPage = new OpenPage(driver);
             openPage.checkFirstDialog();
 
         } catch (MalformedURLException exc) {
@@ -45,7 +50,7 @@ public class MainTest extends ExecutionContext implements NotepadTest {
         System.out.println("I'm on vertex NEW NOTE");
 
         try {
-            driver = DriverRunner.getDriver();
+            driver = DriverRunner.createDriver();
             OpenPage openPage = new OpenPage(driver);
             ListNotes listNotes = openPage.checkFirstDialog();
             listNotes.CreateNewNote();
@@ -63,7 +68,7 @@ public class MainTest extends ExecutionContext implements NotepadTest {
         System.out.println("I'm on vertex LIST NOTES");
 
         try {
-            driver = DriverRunner.getDriver();
+            driver = DriverRunner.createDriver();
             OpenPage openPage = new OpenPage(driver);
             ListNotes listNotes = openPage.checkFirstDialog();
             listNotes.IsListNotesEmpty();
@@ -81,7 +86,7 @@ public class MainTest extends ExecutionContext implements NotepadTest {
         System.out.println("I'm on vertex NOTE DETAILS");
 
         try {
-            driver = DriverRunner.getDriver();
+            driver = DriverRunner.createDriver();
             OpenPage openPage = new OpenPage(driver);
             ListNotes listNotes = openPage.checkFirstDialog();
             listNotes.IsListNotesEmpty();
@@ -100,7 +105,7 @@ public class MainTest extends ExecutionContext implements NotepadTest {
         System.out.println("I'm on vertex NOTE EDITION");
 
         try {
-            driver = DriverRunner.getDriver();
+            driver = DriverRunner.createDriver();
             OpenPage openPage = new OpenPage(driver);
             ListNotes listNotes = openPage.checkFirstDialog();
             listNotes.IsListNotesEmpty();
@@ -127,7 +132,7 @@ public class MainTest extends ExecutionContext implements NotepadTest {
         System.out.println("I'm on edge VIEW LIST NOTES");
 
         try {
-            driver = DriverRunner.getDriver();
+            driver = DriverRunner.createDriver();
             OpenPage openPage = new OpenPage(driver);
             ListNotes listNotes = openPage.checkFirstDialog();
             listNotes.IsListNotesEmpty();
@@ -145,7 +150,7 @@ public class MainTest extends ExecutionContext implements NotepadTest {
         System.out.println("I'm on edge CREATE NOTE");
 
         try {
-            driver = DriverRunner.getDriver();
+            driver = DriverRunner.createDriver();
             OpenPage openPage = new OpenPage(driver);
             ListNotes listNotes = openPage.checkFirstDialog();
             listNotes.CreateNewNote();
@@ -163,7 +168,7 @@ public class MainTest extends ExecutionContext implements NotepadTest {
         System.out.println("I'm on edge GO BACK FROM CREATION");
 
         try {
-            driver = DriverRunner.getDriver();
+            driver = DriverRunner.createDriver();
             OpenPage openPage = new OpenPage(driver);
             ListNotes listNotes = openPage.checkFirstDialog();
             CreateNote newNote = listNotes.CreateNewNote();
@@ -182,7 +187,7 @@ public class MainTest extends ExecutionContext implements NotepadTest {
         System.out.println("I'm on edge DISCARD NEW NOTE");
 
         try {
-            driver = DriverRunner.getDriver();
+            driver = DriverRunner.createDriver();
             OpenPage openPage = new OpenPage(driver);
             ListNotes listNotes = openPage.checkFirstDialog();
             CreateNote newNote = listNotes.CreateNewNote();
@@ -203,7 +208,7 @@ public class MainTest extends ExecutionContext implements NotepadTest {
 
         try {
             String text = "Teste 1";
-            driver = DriverRunner.getDriver();
+            driver = DriverRunner.createDriver();
             OpenPage openPage = new OpenPage(driver);
             ListNotes listNotes = openPage.checkFirstDialog();
             CreateNote newNote = listNotes.CreateNewNote();
@@ -224,7 +229,7 @@ public class MainTest extends ExecutionContext implements NotepadTest {
         System.out.println("I'm on edge SELECT NOTE");
 
         try {
-            driver = DriverRunner.getDriver();
+            driver = DriverRunner.createDriver();
             OpenPage openPage = new OpenPage(driver);
             ListNotes listNotes = openPage.checkFirstDialog();
             if(listNotes.IsListNotesEmpty()){
@@ -246,7 +251,7 @@ public class MainTest extends ExecutionContext implements NotepadTest {
         System.out.println("I'm on edge GO BACK FROM DETAILS");
 
         try {
-            driver = DriverRunner.getDriver();
+            driver = DriverRunner.createDriver();
             OpenPage openPage = new OpenPage(driver);
             ListNotes listNotes = openPage.checkFirstDialog();
             if(!listNotes.IsListNotesEmpty()){
@@ -269,7 +274,7 @@ public class MainTest extends ExecutionContext implements NotepadTest {
         System.out.println("I'm on edge DELETE SELECTED NOTE");
 
         try {
-            driver = DriverRunner.getDriver();
+            driver = DriverRunner.createDriver();
             OpenPage openPage = new OpenPage(driver);
             ListNotes listNotes = openPage.checkFirstDialog();
             if(listNotes.IsListNotesEmpty()){
@@ -293,8 +298,8 @@ public class MainTest extends ExecutionContext implements NotepadTest {
         System.out.println("I'm on edge EDIT NOTE");
 
         try {
-            String text = "Teste 2";
-            driver = DriverRunner.getDriver();
+            //String text = "Teste 2";
+            driver = DriverRunner.createDriver();
             OpenPage openPage = new OpenPage(driver);
             ListNotes listNotes = openPage.checkFirstDialog();
             if(listNotes.IsListNotesEmpty()){
@@ -318,7 +323,7 @@ public class MainTest extends ExecutionContext implements NotepadTest {
         System.out.println("I'm on edge GO BACK FROM EDITION");
 
         try {
-            driver = DriverRunner.getDriver();
+            driver = DriverRunner.createDriver();
             OpenPage openPage = new OpenPage(driver);
             ListNotes listNotes = openPage.checkFirstDialog();
             if(listNotes.IsListNotesEmpty()){
@@ -342,7 +347,7 @@ public class MainTest extends ExecutionContext implements NotepadTest {
         System.out.println("I'm on edge DELETE EDITED NOTE");
 
         try {
-            driver = DriverRunner.getDriver();
+            driver = DriverRunner.createDriver();
             OpenPage openPage = new OpenPage(driver);
             ListNotes listNotes = openPage.checkFirstDialog();
             if(listNotes.IsListNotesEmpty()){
@@ -368,7 +373,7 @@ public class MainTest extends ExecutionContext implements NotepadTest {
 
         try {
             String text = "Teste 2";
-            driver = DriverRunner.getDriver();
+            driver = DriverRunner.createDriver();
             OpenPage openPage = new OpenPage(driver);
             ListNotes listNotes = openPage.checkFirstDialog();
             if(listNotes.IsListNotesEmpty()){
@@ -377,6 +382,7 @@ public class MainTest extends ExecutionContext implements NotepadTest {
                 NoteDetails selectedNote = listNotes.SelectFirstNote(); 
                 NoteEdition noteToEdit = selectedNote.EditNote();
                 noteToEdit.EnterText(text);
+                noteToEdit.SaveEditedNote();
             } 
 
         } catch (MalformedURLException exc) {
