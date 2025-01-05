@@ -1,7 +1,6 @@
 package com.example;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 
 import org.graphwalker.java.test.Executor;
 import org.graphwalker.java.test.Result;
@@ -16,15 +15,6 @@ public class Main {
      */
 
     public static void main(String[] args) throws IOException{
-
-        // Open the SUT via appium
-        
-        try{
-            DriverRunner.getDriver();
-        }catch(MalformedURLException exc){
-            System.out.println(exc.getCause());
-            System.out.println(exc.getMessage());
-        }
 
         // Run Tests
         
