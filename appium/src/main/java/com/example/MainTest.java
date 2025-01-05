@@ -29,8 +29,8 @@ public class MainTest extends ExecutionContext implements NotepadTest {
         System.out.println("I'm on vertex START");
 
         try {
-            driver = DriverRunner.getDriver();
-            OpenPage openPage = new OpenPage(driver);
+           // driver = DriverRunner.getDriver();
+            OpenPage openPage = new OpenPage(DriverRunner.getDriver());
             openPage.checkFirstDialog();
 
         } catch (MalformedURLException exc) {

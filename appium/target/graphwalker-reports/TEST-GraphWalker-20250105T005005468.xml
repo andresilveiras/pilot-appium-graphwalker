@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<testsuites time="35.671" tests="1" failures="0" errors="1">
-    <testsuite name="GraphWalker" tests="1" failures="0" errors="1" time="35.671" timestamp="2025-01-04T21:37:16">
+<testsuites time="0.0" tests="1" failures="0" errors="1">
+    <testsuite name="GraphWalker" tests="1" failures="0" errors="1" time="0.0" timestamp="2025-01-05T00:50:05">
         <properties>
             <property name="classworlds.conf" value="C:\apache-maven-3.9.8\bin\m2.conf"/>
             <property name="env.=C:" value="C:\Users\andre\Documents\GitHub\pilot-appium-graphwalker\appium"/>
@@ -132,15 +132,15 @@
             <property name="user.script" value=""/>
             <property name="user.variant" value=""/>
         </properties>
-        <testcase name="MainTest" time="35.671" classname="com.example.MainTest">
+        <testcase name="MainTest" time="0.0" classname="com.example.MainTest">
             <error type="java.lang.NullPointerException" message="The provided search context cannot be null">
                 java.lang.NullPointerException: The provided search context cannot be null&#13;
                 	at com.google.common.base.Preconditions.checkNotNull(Preconditions.java:924)&#13;
                 	at io.appium.java_client.pagefactory.AppiumFieldDecorator.requireWebDriverReference(AppiumFieldDecorator.java:129)&#13;
                 	at io.appium.java_client.pagefactory.AppiumFieldDecorator.&lt;init&gt;(AppiumFieldDecorator.java:86)&#13;
-                	at com.example.po.BasePage.&lt;init&gt;(BasePage.java:19)&#13;
-                	at com.example.Navigation.&lt;init&gt;(Navigation.java:13)&#13;
-                	at com.example.MainTest.e_ViewListNotes(MainTest.java:143)&#13;
+                	at com.example.po.BasePage.&lt;init&gt;(BasePage.java:16)&#13;
+                	at com.example.po.OpenPage.&lt;init&gt;(OpenPage.java:12)&#13;
+                	at com.example.MainTest.v_Start(MainTest.java:33)&#13;
                 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)&#13;
                 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)&#13;
                 	at org.graphwalker.core.machine.ExecutionContext.execute(ExecutionContext.java:277)&#13;

@@ -41,7 +41,7 @@ public class DriverRunner {
         //this is the path of where the SUT is located in your machine, not in the device
         String appPath = "Documents/GitHub/pilot-appium-graphwalker/appium/src/main/resources/notepad.apk";
         String appPackage = "com.farmerbb.notepad";
-        String appActivity1 = "com.farmerbb.notepad.android.NotepadActivity";
+        //String appActivity1 = "com.farmerbb.notepad.android.NotepadActivity";
 
         String appiumServerURL = "http://127.0.0.1:4723";
 
@@ -59,7 +59,8 @@ public class DriverRunner {
         // SUT SETUP
         .setApp(appPath)
         .setAppPackage(appPackage)
-        .setAppActivity(appActivity1);
+        //.setAppActivity(appActivity1)
+        .setNoReset(true);
 
         // Connect Capabilities to Appium Server
         URL url = new URL(appiumServerURL);

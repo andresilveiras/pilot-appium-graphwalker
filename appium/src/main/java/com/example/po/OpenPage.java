@@ -7,8 +7,12 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 
 public class OpenPage extends BasePage {
 
-    // PAGE ELEMENTS
+    // Driver instanciation
+    public OpenPage(AndroidDriver d) {
+        super(d);
+    }
 
+    // PAGE ELEMENTS
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Bem-vindo ao Notepad!\n"
             + //
             "\n"
@@ -22,14 +26,7 @@ public class OpenPage extends BasePage {
     @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.Button\")")
     RemoteWebElement closeDialogButton;
 
-    // Driver instanciation
-
-    public OpenPage(AndroidDriver d) {
-        super(d);
-    }
-
     // PAGE ACTIONS
-
     public ListNotes checkFirstDialog() {
         System.out.println("Checking android dialog...");
         System.out.println("first access dialog: " + firstAccessDialogText.isEnabled());
@@ -41,5 +38,5 @@ public class OpenPage extends BasePage {
         }
         return new ListNotes(d);
     }
-    
+
 }
