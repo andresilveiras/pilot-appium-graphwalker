@@ -229,11 +229,16 @@ public class MainTest extends ExecutionContext implements NotepadTest {
         System.out.println("I'm on edge SELECT NOTE");
 
         try {
+            String text = "Teste 1";
             driver = DriverRunner.createDriver();
             OpenPage openPage = new OpenPage(driver);
             ListNotes listNotes = openPage.checkFirstDialog();
             if(listNotes.IsListNotesEmpty()){
-                System.out.println("Action failed. There is no note to select.");
+                System.out.println("There is no note to select. Creating a new note...");
+                CreateNote newNote = listNotes.CreateNewNote();
+                newNote.EnterText(text);
+                newNote.SaveNewNote();
+                listNotes.SelectFirstNote(); 
             }else{
                 listNotes.SelectFirstNote(); 
             }            
@@ -251,15 +256,21 @@ public class MainTest extends ExecutionContext implements NotepadTest {
         System.out.println("I'm on edge GO BACK FROM DETAILS");
 
         try {
+            String text = "Teste 1";
             driver = DriverRunner.createDriver();
             OpenPage openPage = new OpenPage(driver);
             ListNotes listNotes = openPage.checkFirstDialog();
-            if(!listNotes.IsListNotesEmpty()){
-                System.out.println("Action failed. There is no note to select.");
+            if(listNotes.IsListNotesEmpty()){
+                System.out.println("There is no note to select. Creating a new note...");
+                CreateNote newNote = listNotes.CreateNewNote();
+                newNote.EnterText(text);
+                newNote.SaveNewNote();
+                NoteDetails selectedNote = listNotes.SelectFirstNote(); 
+                selectedNote.GoBack();
             }else{
                 NoteDetails selectedNote = listNotes.SelectFirstNote(); 
-               selectedNote.GoBack();
-            }  
+                selectedNote.GoBack();
+            } 
 
         } catch (MalformedURLException exc) {
             System.out.println(exc.getCause());
@@ -274,14 +285,21 @@ public class MainTest extends ExecutionContext implements NotepadTest {
         System.out.println("I'm on edge DELETE SELECTED NOTE");
 
         try {
+            String text = "Teste 1";
             driver = DriverRunner.createDriver();
             OpenPage openPage = new OpenPage(driver);
             ListNotes listNotes = openPage.checkFirstDialog();
             if(listNotes.IsListNotesEmpty()){
-                System.out.println("Action failed. There is no note to select.");
+                System.out.println("There is no note to select. Creating a new note...");
+                CreateNote newNote = listNotes.CreateNewNote();
+                newNote.EnterText(text);
+                newNote.SaveNewNote();
+                NoteDetails selectedNote = listNotes.SelectFirstNote(); 
+                selectedNote.CancelDiscard();
+               selectedNote.DiscardNote();
             }else{
                 NoteDetails selectedNote = listNotes.SelectFirstNote(); 
-               selectedNote.CancelDiscard();
+                selectedNote.CancelDiscard();
                selectedNote.DiscardNote();
             } 
 
@@ -298,12 +316,17 @@ public class MainTest extends ExecutionContext implements NotepadTest {
         System.out.println("I'm on edge EDIT NOTE");
 
         try {
-            //String text = "Teste 2";
+            String text = "Teste 1";
             driver = DriverRunner.createDriver();
             OpenPage openPage = new OpenPage(driver);
             ListNotes listNotes = openPage.checkFirstDialog();
             if(listNotes.IsListNotesEmpty()){
-                System.out.println("Action failed. There is no note to select.");
+                System.out.println("There is no note to select. Creating a new note...");
+                CreateNote newNote = listNotes.CreateNewNote();
+                newNote.EnterText(text);
+                newNote.SaveNewNote();
+                NoteDetails selectedNote = listNotes.SelectFirstNote(); 
+                selectedNote.EditNote();
             }else{
                 NoteDetails selectedNote = listNotes.SelectFirstNote(); 
                 selectedNote.EditNote();
@@ -323,11 +346,18 @@ public class MainTest extends ExecutionContext implements NotepadTest {
         System.out.println("I'm on edge GO BACK FROM EDITION");
 
         try {
+            String text = "Teste 1";
             driver = DriverRunner.createDriver();
             OpenPage openPage = new OpenPage(driver);
             ListNotes listNotes = openPage.checkFirstDialog();
             if(listNotes.IsListNotesEmpty()){
-                System.out.println("Action failed. There is no note to select.");
+                System.out.println("There is no note to select. Creating a new note...");
+                CreateNote newNote = listNotes.CreateNewNote();
+                newNote.EnterText(text);
+                newNote.SaveNewNote();
+                NoteDetails selectedNote = listNotes.SelectFirstNote(); 
+                NoteEdition noteToEdit = selectedNote.EditNote();
+                noteToEdit.GoBack();
             }else{
                 NoteDetails selectedNote = listNotes.SelectFirstNote(); 
                 NoteEdition noteToEdit = selectedNote.EditNote();
@@ -347,11 +377,19 @@ public class MainTest extends ExecutionContext implements NotepadTest {
         System.out.println("I'm on edge DELETE EDITED NOTE");
 
         try {
+            String text = "Teste 1";
             driver = DriverRunner.createDriver();
             OpenPage openPage = new OpenPage(driver);
             ListNotes listNotes = openPage.checkFirstDialog();
             if(listNotes.IsListNotesEmpty()){
-                System.out.println("Action failed. There is no note to select.");
+                System.out.println("There is no note to select. Creating a new note...");
+                CreateNote newNote = listNotes.CreateNewNote();
+                newNote.EnterText(text);
+                newNote.SaveNewNote();
+                NoteDetails selectedNote = listNotes.SelectFirstNote(); 
+                NoteEdition noteToEdit = selectedNote.EditNote();
+                noteToEdit.CancelDiscard();
+                noteToEdit.DiscardNote();
             }else{
                 NoteDetails selectedNote = listNotes.SelectFirstNote(); 
                 NoteEdition noteToEdit = selectedNote.EditNote();
@@ -372,16 +410,24 @@ public class MainTest extends ExecutionContext implements NotepadTest {
         System.out.println("I'm on edge SAVE EDITED NOTE");
 
         try {
-            String text = "Teste 2";
+            String text1 = "Teste 1";
+            String text2 = "Teste 2";
             driver = DriverRunner.createDriver();
             OpenPage openPage = new OpenPage(driver);
             ListNotes listNotes = openPage.checkFirstDialog();
             if(listNotes.IsListNotesEmpty()){
-                System.out.println("Action failed. There is no note to select.");
+                System.out.println("There is no note to select. Creating a new note...");
+                CreateNote newNote = listNotes.CreateNewNote();
+                newNote.EnterText(text1);
+                newNote.SaveNewNote();
+                NoteDetails selectedNote = listNotes.SelectFirstNote(); 
+                NoteEdition noteToEdit = selectedNote.EditNote();
+                noteToEdit.EnterText(text2);
+                noteToEdit.SaveEditedNote();
             }else{
                 NoteDetails selectedNote = listNotes.SelectFirstNote(); 
                 NoteEdition noteToEdit = selectedNote.EditNote();
-                noteToEdit.EnterText(text);
+                noteToEdit.EnterText(text2);
                 noteToEdit.SaveEditedNote();
             } 
 

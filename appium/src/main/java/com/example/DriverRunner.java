@@ -51,8 +51,8 @@ public class DriverRunner {
         // SUT SETUP
         .setApp(appPath)
         .setAppPackage(appPackage)
-        .setAppActivity(appActivity1)
-        .setNoReset(true);
+        .setAppActivity(appActivity1);
+        //.setNoReset(true);
 
         // Connect Capabilities to Appium Server
         URL url = new URL(appiumServerURL);
