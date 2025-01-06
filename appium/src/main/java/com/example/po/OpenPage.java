@@ -18,22 +18,6 @@ public class OpenPage extends BasePage {
             System.out.println("Driver is NOT null");
         }
     }
-/*
-    
-    @FindBy(xpath = "//android.widget.TextView[@text=\"Bem-vindo ao Notepad!\n"
-            + //
-            "\n"
-            + //
-            "Para criar uma nota, clique no botão Nova Nota (sinal de mais).\"]")
-    RemoteWebElement firstAccessDialogText;
-
-    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.view.View\").instance(2)")
-    RemoteWebElement androidDialog;
-
-    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.Button\")")
-    RemoteWebElement closeDialogButton;
-
-*/
 
     // PAGE ELEMENTS
 
@@ -42,7 +26,7 @@ public class OpenPage extends BasePage {
     RemoteWebElement closeDialogButton = (RemoteWebElement)d.findElement(By.xpath("//android.widget.Button"));
 
     // PAGE ACTIONS
-    public ListNotes checkFirstDialog() {
+    public ListNotesEmpty checkFirstDialog() {
         System.out.println("Checking android dialog...");
         System.out.println("first access dialog: " + firstAccessDialogText.isEnabled());
         if (firstAccessDialogText.isDisplayed() || androidDialog.isDisplayed()) {
@@ -51,6 +35,6 @@ public class OpenPage extends BasePage {
         } else {
             System.out.println("There is no dialog to be closed.");
         }
-        return new ListNotes(d);
+        return new ListNotesEmpty(d);
     }
 }

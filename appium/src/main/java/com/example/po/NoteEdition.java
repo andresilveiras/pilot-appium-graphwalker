@@ -9,7 +9,7 @@ public class NoteEdition extends BasePage {
 
     // PAGE ELEMENTS
 
-    @AndroidFindBy(uiAutomator="new UiSelector().className(\"android.view.View\").instance(2)")
+    @AndroidFindBy(xpath="//android.widget.EditText")
     RemoteWebElement textField;
 
     @AndroidFindBy(uiAutomator="new UiSelector().className(\"android.widget.Button\").instance(0)")

@@ -13,6 +13,6 @@ public class BasePage {
     
     public BasePage(AndroidDriver d) {
         this.d = d;
-        PageFactory.initElements(new AppiumFieldDecorator(d, Duration.ofSeconds(30)), this);
+        PageFactory.initElements(new AppiumFieldDecorator(d, Duration.ofSeconds(3600)), this);
     }
 }

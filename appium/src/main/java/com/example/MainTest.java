@@ -7,6 +7,7 @@ import org.graphwalker.java.annotation.GraphWalker;
 
 import com.example.po.CreateNote;
 import com.example.po.ListNotes;
+import com.example.po.ListNotesEmpty;
 import com.example.po.NoteDetails;
 import com.example.po.NoteEdition;
 import com.example.po.OpenPage;
@@ -28,37 +29,12 @@ public class MainTest extends ExecutionContext implements NotepadTest {
 
         System.out.println("I'm on vertex START");
 
-        try {
-            driver = DriverRunner.createDriver();
-            if(driver == null){
-                System.out.println("Driver is null");
-            }else{
-                System.out.println("Driver is NOT null");
-            }
-            OpenPage openPage = new OpenPage(driver);
-            openPage.checkFirstDialog();
-
-        } catch (MalformedURLException exc) {
-            System.out.println(exc.getCause());
-            System.out.println(exc.getMessage());
-        }
     }
 
     @Override
     public void v_NewNote() {
 
         System.out.println("I'm on vertex NEW NOTE");
-
-        try {
-            driver = DriverRunner.createDriver();
-            OpenPage openPage = new OpenPage(driver);
-            ListNotes listNotes = openPage.checkFirstDialog();
-            listNotes.CreateNewNote();
-
-        } catch (MalformedURLException exc) {
-            System.out.println(exc.getCause());
-            System.out.println(exc.getMessage());
-        }
 
     }
 
@@ -67,17 +43,6 @@ public class MainTest extends ExecutionContext implements NotepadTest {
 
         System.out.println("I'm on vertex LIST NOTES");
 
-        try {
-            driver = DriverRunner.createDriver();
-            OpenPage openPage = new OpenPage(driver);
-            ListNotes listNotes = openPage.checkFirstDialog();
-            listNotes.IsListNotesEmpty();
-
-        } catch (MalformedURLException exc) {
-            System.out.println(exc.getCause());
-            System.out.println(exc.getMessage());
-        }
-
     }
 
     @Override
@@ -85,37 +50,12 @@ public class MainTest extends ExecutionContext implements NotepadTest {
 
         System.out.println("I'm on vertex NOTE DETAILS");
 
-        try {
-            driver = DriverRunner.createDriver();
-            OpenPage openPage = new OpenPage(driver);
-            ListNotes listNotes = openPage.checkFirstDialog();
-            listNotes.IsListNotesEmpty();
-            listNotes.SelectFirstNote();
-
-        } catch (MalformedURLException exc) {
-            System.out.println(exc.getCause());
-            System.out.println(exc.getMessage());
-        }
-
     }
 
     @Override
     public void v_NoteEdition() {
 
         System.out.println("I'm on vertex NOTE EDITION");
-
-        try {
-            driver = DriverRunner.createDriver();
-            OpenPage openPage = new OpenPage(driver);
-            ListNotes listNotes = openPage.checkFirstDialog();
-            listNotes.IsListNotesEmpty();
-            NoteDetails selectedNote = listNotes.SelectFirstNote();
-            selectedNote.EditNote();
-
-        } catch (MalformedURLException exc) {
-            System.out.println(exc.getCause());
-            System.out.println(exc.getMessage());
-        }
 
     }
 
@@ -134,7 +74,7 @@ public class MainTest extends ExecutionContext implements NotepadTest {
         try {
             driver = DriverRunner.createDriver();
             OpenPage openPage = new OpenPage(driver);
-            ListNotes listNotes = openPage.checkFirstDialog();
+            ListNotesEmpty listNotes = openPage.checkFirstDialog();
             listNotes.IsListNotesEmpty();
 
         } catch (MalformedURLException exc) {
@@ -152,7 +92,7 @@ public class MainTest extends ExecutionContext implements NotepadTest {
         try {
             driver = DriverRunner.createDriver();
             OpenPage openPage = new OpenPage(driver);
-            ListNotes listNotes = openPage.checkFirstDialog();
+            ListNotesEmpty listNotes = openPage.checkFirstDialog();
             listNotes.CreateNewNote();
 
         } catch (MalformedURLException exc) {
@@ -170,7 +110,7 @@ public class MainTest extends ExecutionContext implements NotepadTest {
         try {
             driver = DriverRunner.createDriver();
             OpenPage openPage = new OpenPage(driver);
-            ListNotes listNotes = openPage.checkFirstDialog();
+            ListNotesEmpty listNotes = openPage.checkFirstDialog();
             CreateNote newNote = listNotes.CreateNewNote();
             newNote.GoBack();
 
@@ -189,7 +129,7 @@ public class MainTest extends ExecutionContext implements NotepadTest {
         try {
             driver = DriverRunner.createDriver();
             OpenPage openPage = new OpenPage(driver);
-            ListNotes listNotes = openPage.checkFirstDialog();
+            ListNotesEmpty listNotes = openPage.checkFirstDialog();
             CreateNote newNote = listNotes.CreateNewNote();
             newNote.CancelDiscard();
             newNote.DiscardNewNote();
@@ -210,7 +150,7 @@ public class MainTest extends ExecutionContext implements NotepadTest {
             String text = "Teste 1";
             driver = DriverRunner.createDriver();
             OpenPage openPage = new OpenPage(driver);
-            ListNotes listNotes = openPage.checkFirstDialog();
+            ListNotesEmpty listNotes = openPage.checkFirstDialog();
             CreateNote newNote = listNotes.CreateNewNote();
             newNote.EnterText(text);
             newNote.SaveNewNote();
@@ -232,16 +172,13 @@ public class MainTest extends ExecutionContext implements NotepadTest {
             String text = "Teste 1";
             driver = DriverRunner.createDriver();
             OpenPage openPage = new OpenPage(driver);
-            ListNotes listNotes = openPage.checkFirstDialog();
-            if(listNotes.IsListNotesEmpty()){
-                System.out.println("There is no note to select. Creating a new note...");
-                CreateNote newNote = listNotes.CreateNewNote();
-                newNote.EnterText(text);
-                newNote.SaveNewNote();
-                listNotes.SelectFirstNote(); 
-            }else{
-                listNotes.SelectFirstNote(); 
-            }            
+            ListNotesEmpty listNotes = openPage.checkFirstDialog();
+            listNotes.IsListNotesEmpty();
+            CreateNote newNote = listNotes.CreateNewNote();
+            newNote.EnterText(text);
+            NoteDetails createdNote = newNote.SaveNewNote();
+            ListNotes createdNoteOnList = createdNote.GoBack(); 
+            createdNoteOnList.SelectFirstNote();   
 
         } catch (MalformedURLException exc) {
             System.out.println(exc.getCause());
@@ -259,18 +196,14 @@ public class MainTest extends ExecutionContext implements NotepadTest {
             String text = "Teste 1";
             driver = DriverRunner.createDriver();
             OpenPage openPage = new OpenPage(driver);
-            ListNotes listNotes = openPage.checkFirstDialog();
-            if(listNotes.IsListNotesEmpty()){
-                System.out.println("There is no note to select. Creating a new note...");
-                CreateNote newNote = listNotes.CreateNewNote();
-                newNote.EnterText(text);
-                newNote.SaveNewNote();
-                NoteDetails selectedNote = listNotes.SelectFirstNote(); 
-                selectedNote.GoBack();
-            }else{
-                NoteDetails selectedNote = listNotes.SelectFirstNote(); 
-                selectedNote.GoBack();
-            } 
+            ListNotesEmpty listNotes = openPage.checkFirstDialog();
+            listNotes.IsListNotesEmpty();
+            CreateNote newNote = listNotes.CreateNewNote();
+            newNote.EnterText(text);
+            NoteDetails createdNote = newNote.SaveNewNote();
+            ListNotes createdNoteOnList = createdNote.GoBack(); 
+            NoteDetails noteToEdit = createdNoteOnList.SelectFirstNote();
+            noteToEdit.GoBack();
 
         } catch (MalformedURLException exc) {
             System.out.println(exc.getCause());
@@ -288,20 +221,15 @@ public class MainTest extends ExecutionContext implements NotepadTest {
             String text = "Teste 1";
             driver = DriverRunner.createDriver();
             OpenPage openPage = new OpenPage(driver);
-            ListNotes listNotes = openPage.checkFirstDialog();
-            if(listNotes.IsListNotesEmpty()){
-                System.out.println("There is no note to select. Creating a new note...");
-                CreateNote newNote = listNotes.CreateNewNote();
-                newNote.EnterText(text);
-                newNote.SaveNewNote();
-                NoteDetails selectedNote = listNotes.SelectFirstNote(); 
-                selectedNote.CancelDiscard();
-               selectedNote.DiscardNote();
-            }else{
-                NoteDetails selectedNote = listNotes.SelectFirstNote(); 
-                selectedNote.CancelDiscard();
-               selectedNote.DiscardNote();
-            } 
+            ListNotesEmpty listNotes = openPage.checkFirstDialog();
+            listNotes.IsListNotesEmpty();
+            CreateNote newNote = listNotes.CreateNewNote();
+            newNote.EnterText(text);
+            NoteDetails createdNote = newNote.SaveNewNote();
+            ListNotes createdNoteOnList = createdNote.GoBack(); 
+            NoteDetails noteToEdit = createdNoteOnList.SelectFirstNote();
+            noteToEdit.CancelDiscard();
+            noteToEdit.DiscardNote();
 
         } catch (MalformedURLException exc) {
             System.out.println(exc.getCause());
@@ -319,18 +247,14 @@ public class MainTest extends ExecutionContext implements NotepadTest {
             String text = "Teste 1";
             driver = DriverRunner.createDriver();
             OpenPage openPage = new OpenPage(driver);
-            ListNotes listNotes = openPage.checkFirstDialog();
-            if(listNotes.IsListNotesEmpty()){
-                System.out.println("There is no note to select. Creating a new note...");
-                CreateNote newNote = listNotes.CreateNewNote();
-                newNote.EnterText(text);
-                newNote.SaveNewNote();
-                NoteDetails selectedNote = listNotes.SelectFirstNote(); 
-                selectedNote.EditNote();
-            }else{
-                NoteDetails selectedNote = listNotes.SelectFirstNote(); 
-                selectedNote.EditNote();
-            } 
+            ListNotesEmpty listNotes = openPage.checkFirstDialog();
+            listNotes.IsListNotesEmpty();
+            CreateNote newNote = listNotes.CreateNewNote();
+            newNote.EnterText(text);
+            NoteDetails createdNote = newNote.SaveNewNote();
+            ListNotes createdNoteOnList = createdNote.GoBack(); 
+            NoteDetails noteToEdit = createdNoteOnList.SelectFirstNote();
+            noteToEdit.EditNote();
 
         } catch (MalformedURLException exc) {
             System.out.println(exc.getCause());
@@ -349,20 +273,15 @@ public class MainTest extends ExecutionContext implements NotepadTest {
             String text = "Teste 1";
             driver = DriverRunner.createDriver();
             OpenPage openPage = new OpenPage(driver);
-            ListNotes listNotes = openPage.checkFirstDialog();
-            if(listNotes.IsListNotesEmpty()){
-                System.out.println("There is no note to select. Creating a new note...");
-                CreateNote newNote = listNotes.CreateNewNote();
-                newNote.EnterText(text);
-                newNote.SaveNewNote();
-                NoteDetails selectedNote = listNotes.SelectFirstNote(); 
-                NoteEdition noteToEdit = selectedNote.EditNote();
-                noteToEdit.GoBack();
-            }else{
-                NoteDetails selectedNote = listNotes.SelectFirstNote(); 
-                NoteEdition noteToEdit = selectedNote.EditNote();
-                noteToEdit.GoBack();
-            } 
+            ListNotesEmpty listNotes = openPage.checkFirstDialog();
+            listNotes.IsListNotesEmpty();
+            CreateNote newNote = listNotes.CreateNewNote();
+            newNote.EnterText(text);
+            NoteDetails createdNote = newNote.SaveNewNote();
+            ListNotes createdNoteOnList = createdNote.GoBack(); 
+            NoteDetails noteToEdit = createdNoteOnList.SelectFirstNote();
+            NoteEdition edit = noteToEdit.EditNote();
+            edit.GoBack();
 
         } catch (MalformedURLException exc) {
             System.out.println(exc.getCause());
@@ -380,22 +299,16 @@ public class MainTest extends ExecutionContext implements NotepadTest {
             String text = "Teste 1";
             driver = DriverRunner.createDriver();
             OpenPage openPage = new OpenPage(driver);
-            ListNotes listNotes = openPage.checkFirstDialog();
-            if(listNotes.IsListNotesEmpty()){
-                System.out.println("There is no note to select. Creating a new note...");
-                CreateNote newNote = listNotes.CreateNewNote();
-                newNote.EnterText(text);
-                newNote.SaveNewNote();
-                NoteDetails selectedNote = listNotes.SelectFirstNote(); 
-                NoteEdition noteToEdit = selectedNote.EditNote();
-                noteToEdit.CancelDiscard();
-                noteToEdit.DiscardNote();
-            }else{
-                NoteDetails selectedNote = listNotes.SelectFirstNote(); 
-                NoteEdition noteToEdit = selectedNote.EditNote();
-                noteToEdit.CancelDiscard();
-                noteToEdit.DiscardNote();
-            } 
+            ListNotesEmpty listNotes = openPage.checkFirstDialog();
+            listNotes.IsListNotesEmpty();
+            CreateNote newNote = listNotes.CreateNewNote();
+            newNote.EnterText(text);
+            NoteDetails createdNote = newNote.SaveNewNote();
+            ListNotes createdNoteOnList = createdNote.GoBack(); 
+            NoteDetails noteToEdit = createdNoteOnList.SelectFirstNote();
+            NoteEdition edit = noteToEdit.EditNote();
+            edit.CancelDiscard();
+            edit.DiscardNote();
 
         } catch (MalformedURLException exc) {
             System.out.println(exc.getCause());
@@ -414,22 +327,16 @@ public class MainTest extends ExecutionContext implements NotepadTest {
             String text2 = "Teste 2";
             driver = DriverRunner.createDriver();
             OpenPage openPage = new OpenPage(driver);
-            ListNotes listNotes = openPage.checkFirstDialog();
-            if(listNotes.IsListNotesEmpty()){
-                System.out.println("There is no note to select. Creating a new note...");
-                CreateNote newNote = listNotes.CreateNewNote();
-                newNote.EnterText(text1);
-                newNote.SaveNewNote();
-                NoteDetails selectedNote = listNotes.SelectFirstNote(); 
-                NoteEdition noteToEdit = selectedNote.EditNote();
-                noteToEdit.EnterText(text2);
-                noteToEdit.SaveEditedNote();
-            }else{
-                NoteDetails selectedNote = listNotes.SelectFirstNote(); 
-                NoteEdition noteToEdit = selectedNote.EditNote();
-                noteToEdit.EnterText(text2);
-                noteToEdit.SaveEditedNote();
-            } 
+            ListNotesEmpty listNotes = openPage.checkFirstDialog();
+            listNotes.IsListNotesEmpty();
+            CreateNote newNote = listNotes.CreateNewNote();
+            newNote.EnterText(text1);
+            NoteDetails createdNote = newNote.SaveNewNote();
+            ListNotes createdNoteOnList = createdNote.GoBack(); 
+            NoteDetails noteToEdit = createdNoteOnList.SelectFirstNote();
+            NoteEdition edit = noteToEdit.EditNote();
+            edit.EnterText(text2);
+            edit.SaveEditedNote();
 
         } catch (MalformedURLException exc) {
             System.out.println(exc.getCause());

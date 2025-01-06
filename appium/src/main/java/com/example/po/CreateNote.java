@@ -15,7 +15,7 @@ public class CreateNote extends BasePage {
     @AndroidFindBy(uiAutomator="new UiSelector().text(\"Digite para inserir texto\")")
     RemoteWebElement typeText;
 
-    @AndroidFindBy(xpath="//android.widget.EditText/android.view.View")
+    @AndroidFindBy(xpath="//android.widget.EditText")
     RemoteWebElement textField;
 
     @AndroidFindBy(uiAutomator="new UiSelector().className(\"android.widget.Button\").instance(0)")
@@ -59,6 +59,7 @@ public class CreateNote extends BasePage {
         System.out.println("Checking if user is in edit mode...");
         if(typeText.isDisplayed() || textField.isDisplayed()){
             System.out.println("User is in edition mode. Entering text: " + text);
+            //textField.click();
             textField.sendKeys(text);
         }else{
             System.out.println("Action failed. Please go to edition mode to enter a text.");
