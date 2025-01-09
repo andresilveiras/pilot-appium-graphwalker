@@ -46,7 +46,7 @@ OBS: Os comandos de terminal funcionam para todos os SO da máquina: Windows, Li
 - Salve as alterações (Ctrl + S)
 - No terminal, entre na pasta onde está o POM e digite o comando `mvn clean install` (irá instalar as dependências e compilar as classes)
 - Recomendado caso esteja testando em dispositivo físico: Espelhe a tela do disposivo pelo app Vysor (https://www.vysor.io/)
-- Inicie o server appium abrindo um terminal à parte, digitando o comando `appium --keep-alive-timeout 180`
+- Inicie o server appium abrindo um terminal à parte, digitando o comando `appium`
 - Se estiver com o server do appium aberto e visualizando a tela do dispositivo, abra o terminal que rodou o maven e digite o comando `mvn org.graphwalker:graphwalker-maven-plugin:test`
 
 CRÉDITOS:
@@ -101,7 +101,7 @@ NOTE: The terminal commands work for all machine OS: Windows, Linux and Mac
 - Save changes (Ctrl + S)
 - In the terminal, go to the folder where the POM file is located and run command `mvn clean install` (it will install the dependencies and compile the classes)
 - Recommended if you are testing on a physical device: Mirror the device's screen through the Vysor app (https://www.vysor.io/)
-- Start the appium server by opening a separate terminal and run command `appium --keep-alive-timeout 180` 
+- Start the appium server by opening a separate terminal and run command `appium` 
 - If you have appium server running and are viewing the device's screen, open the terminal that ran maven and type the command `mvn org.graphwalker:graphwalker-maven-plugin:test`
 
 CREDITS:
