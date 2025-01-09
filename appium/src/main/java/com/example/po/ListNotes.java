@@ -18,8 +18,6 @@ public class ListNotes extends BasePage {
     @AndroidFindBy(uiAutomator="new UiSelector().className(\"android.view.View\").instance(3)")
     RemoteWebElement firstNoteOption;
 
-
-
     // Driver instanciation
 
     public ListNotes(AndroidDriver d) {
@@ -27,6 +25,12 @@ public class ListNotes extends BasePage {
     }
 
     // PAGE ACTIONS:
+
+    // Check that is in main page --> Stay in the same page
+    public boolean CheckMainPage(){
+        System.out.println("Main Page check...");
+        return mainScreenTitle.isDisplayed();
+    }
 
     // Create new note --> Go to create note
 

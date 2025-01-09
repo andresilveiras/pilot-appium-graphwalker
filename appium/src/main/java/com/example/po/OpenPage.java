@@ -1,9 +1,9 @@
 package com.example.po;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.remote.RemoteWebElement;
 
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.pagefactory.AndroidFindBy;
 
 
 public class OpenPage extends BasePage {
@@ -21,9 +21,14 @@ public class OpenPage extends BasePage {
 
     // PAGE ELEMENTS
 
-    RemoteWebElement firstAccessDialogText = (RemoteWebElement)d.findElement(By.xpath("//android.widget.TextView[@text=\"Notepad\"]"));
-    RemoteWebElement androidDialog = (RemoteWebElement)d.findElement(By.xpath("//android.view.ViewGroup/android.view.View/android.view.View/android.view.View"));
-    RemoteWebElement closeDialogButton = (RemoteWebElement)d.findElement(By.xpath("//android.widget.Button"));
+    @AndroidFindBy(xpath="//android.widget.TextView[@text=\"Notepad\"]")
+    RemoteWebElement firstAccessDialogText;
+
+    @AndroidFindBy(xpath="//android.view.ViewGroup/android.view.View/android.view.View/android.view.View")
+    RemoteWebElement androidDialog;
+
+    @AndroidFindBy(xpath="//android.widget.Button")
+    RemoteWebElement closeDialogButton;
 
     // PAGE ACTIONS
     public ListNotesEmpty checkFirstDialog() {

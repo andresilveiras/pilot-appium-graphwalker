@@ -2,7 +2,9 @@ package com.example;
 
 import java.net.MalformedURLException;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.graphwalker.core.machine.ExecutionContext;
+import org.graphwalker.java.annotation.BeforeExecution;
 import org.graphwalker.java.annotation.GraphWalker;
 
 import com.example.po.CreateNote;
@@ -17,13 +19,37 @@ import io.appium.java_client.android.AndroidDriver;
 @GraphWalker(value = "random(edge_coverage(100))")
 public class MainTest extends ExecutionContext implements NotepadTest {
 
-    AndroidDriver driver;
+    AndroidDriver driver; 
+
+    int numberOfNotes = 0;
+    int textLength = 50;
+    String text;
+    boolean isFirstNote = true;
+
+    OpenPage welcomePage;
+    CreateNote newNotePage;
+    ListNotesEmpty emptyListPage;
+    ListNotes notesListPage;
+    NoteDetails noteDetailsPage;
+    NoteEdition noteEditionPage;
+
+    @BeforeExecution
+    public void initDriver(){
+        try {
+            driver = DriverRunner.createDriver();
+
+        } catch (MalformedURLException exc) {
+            System.out.println(exc.getCause());
+            System.out.println(exc.getMessage());
+        } 
+    }
 
     /* 
     * ******************************************* 
     *             States / Vertex
     * ******************************************* 
-     */
+    */
+
     @Override
     public void v_Start() {
 
@@ -35,13 +61,30 @@ public class MainTest extends ExecutionContext implements NotepadTest {
     public void v_NewNote() {
 
         System.out.println("I'm on vertex NEW NOTE");
-
+        if(newNotePage == null){
+            newNotePage = new CreateNote(driver);
+        }
+        newNotePage.NewNoteCheck();
+        
     }
 
     @Override
     public void v_ListNotes() {
 
         System.out.println("I'm on vertex LIST NOTES");
+
+        System.out.println("The actual number of notes is: " + numberOfNotes);
+        if(numberOfNotes == 0){
+            if(emptyListPage == null){
+                emptyListPage = new ListNotesEmpty(driver);
+            }
+            emptyListPage.IsListNotesEmpty();
+        }else{
+            if(notesListPage == null){
+                notesListPage = new ListNotes(driver);
+            }
+            notesListPage.CheckMainPage();
+        }
 
     }
 
@@ -50,6 +93,13 @@ public class MainTest extends ExecutionContext implements NotepadTest {
 
         System.out.println("I'm on vertex NOTE DETAILS");
 
+        if(noteDetailsPage == null){
+            noteDetailsPage = new NoteDetails(driver);
+        }
+        if(numberOfNotes > 0){
+            noteDetailsPage.CheckNoteText(text);
+        }        
+
     }
 
     @Override
@@ -57,6 +107,12 @@ public class MainTest extends ExecutionContext implements NotepadTest {
 
         System.out.println("I'm on vertex NOTE EDITION");
 
+        if(noteEditionPage == null){
+            noteEditionPage = new NoteEdition(driver);
+        }
+        if(numberOfNotes > 0){
+            noteEditionPage.EditionModeCheck();
+        }
     }
 
 
@@ -71,16 +127,8 @@ public class MainTest extends ExecutionContext implements NotepadTest {
 
         System.out.println("I'm on edge VIEW LIST NOTES");
 
-        try {
-            driver = DriverRunner.createDriver();
-            OpenPage openPage = new OpenPage(driver);
-            ListNotesEmpty listNotes = openPage.checkFirstDialog();
-            listNotes.IsListNotesEmpty();
-
-        } catch (MalformedURLException exc) {
-            System.out.println(exc.getCause());
-            System.out.println(exc.getMessage());
-        }
+        welcomePage = new OpenPage(driver);
+        welcomePage.checkFirstDialog();
 
     }
 
@@ -89,15 +137,10 @@ public class MainTest extends ExecutionContext implements NotepadTest {
 
         System.out.println("I'm on edge CREATE NOTE");
 
-        try {
-            driver = DriverRunner.createDriver();
-            OpenPage openPage = new OpenPage(driver);
-            ListNotesEmpty listNotes = openPage.checkFirstDialog();
-            listNotes.CreateNewNote();
-
-        } catch (MalformedURLException exc) {
-            System.out.println(exc.getCause());
-            System.out.println(exc.getMessage());
+        if(numberOfNotes == 0){
+            emptyListPage.CreateNewNote();
+        }else{
+            notesListPage.CreateNewNote();
         }
 
     }
@@ -107,16 +150,10 @@ public class MainTest extends ExecutionContext implements NotepadTest {
 
         System.out.println("I'm on edge GO BACK FROM CREATION");
 
-        try {
-            driver = DriverRunner.createDriver();
-            OpenPage openPage = new OpenPage(driver);
-            ListNotesEmpty listNotes = openPage.checkFirstDialog();
-            CreateNote newNote = listNotes.CreateNewNote();
-            newNote.GoBack();
-
-        } catch (MalformedURLException exc) {
-            System.out.println(exc.getCause());
-            System.out.println(exc.getMessage());
+        if(numberOfNotes == 0){
+            newNotePage.GoBackToEmpty();
+        }else{
+            newNotePage.GoBack();
         }
 
     }
@@ -126,17 +163,12 @@ public class MainTest extends ExecutionContext implements NotepadTest {
 
         System.out.println("I'm on edge DISCARD NEW NOTE");
 
-        try {
-            driver = DriverRunner.createDriver();
-            OpenPage openPage = new OpenPage(driver);
-            ListNotesEmpty listNotes = openPage.checkFirstDialog();
-            CreateNote newNote = listNotes.CreateNewNote();
-            newNote.CancelDiscard();
-            newNote.DiscardNewNote();
-
-        } catch (MalformedURLException exc) {
-            System.out.println(exc.getCause());
-            System.out.println(exc.getMessage());
+        if(numberOfNotes == 0){
+            newNotePage.CancelDiscard();
+            newNotePage.DiscardNewFirstNote();
+        }else{
+            newNotePage.CancelDiscard();
+            newNotePage.DiscardNewNote();
         }
 
     }
@@ -145,20 +177,13 @@ public class MainTest extends ExecutionContext implements NotepadTest {
     public void e_SaveNewNote() {
 
         System.out.println("I'm on edge SAVE NEW NOTE");
-
-        try {
-            String text = "Teste 1";
-            driver = DriverRunner.createDriver();
-            OpenPage openPage = new OpenPage(driver);
-            ListNotesEmpty listNotes = openPage.checkFirstDialog();
-            CreateNote newNote = listNotes.CreateNewNote();
-            newNote.EnterText(text);
-            newNote.SaveNewNote();
-
-        } catch (MalformedURLException exc) {
-            System.out.println(exc.getCause());
-            System.out.println(exc.getMessage());
-        }
+        
+        text = generateRandomText(textLength);
+        newNotePage.EnterText(text);
+        newNotePage.SaveNewNote(isFirstNote);
+        numberOfNotes++;
+        isFirstNote = false;
+        System.out.println("The number of notes was increased to: " + numberOfNotes);
 
     }
 
@@ -168,21 +193,10 @@ public class MainTest extends ExecutionContext implements NotepadTest {
 
         System.out.println("I'm on edge SELECT NOTE");
 
-        try {
-            String text = "Teste 1";
-            driver = DriverRunner.createDriver();
-            OpenPage openPage = new OpenPage(driver);
-            ListNotesEmpty listNotes = openPage.checkFirstDialog();
-            listNotes.IsListNotesEmpty();
-            CreateNote newNote = listNotes.CreateNewNote();
-            newNote.EnterText(text);
-            NoteDetails createdNote = newNote.SaveNewNote();
-            ListNotes createdNoteOnList = createdNote.GoBack(); 
-            createdNoteOnList.SelectFirstNote();   
-
-        } catch (MalformedURLException exc) {
-            System.out.println(exc.getCause());
-            System.out.println(exc.getMessage());
+        if(numberOfNotes == 0){
+            System.out.println("There is no note to select.");
+        }else{
+            notesListPage.SelectFirstNote();
         }
 
     }
@@ -192,23 +206,7 @@ public class MainTest extends ExecutionContext implements NotepadTest {
 
         System.out.println("I'm on edge GO BACK FROM DETAILS");
 
-        try {
-            String text = "Teste 1";
-            driver = DriverRunner.createDriver();
-            OpenPage openPage = new OpenPage(driver);
-            ListNotesEmpty listNotes = openPage.checkFirstDialog();
-            listNotes.IsListNotesEmpty();
-            CreateNote newNote = listNotes.CreateNewNote();
-            newNote.EnterText(text);
-            NoteDetails createdNote = newNote.SaveNewNote();
-            ListNotes createdNoteOnList = createdNote.GoBack(); 
-            NoteDetails noteToEdit = createdNoteOnList.SelectFirstNote();
-            noteToEdit.GoBack();
-
-        } catch (MalformedURLException exc) {
-            System.out.println(exc.getCause());
-            System.out.println(exc.getMessage());
-        }
+        noteDetailsPage.GoBack();
 
     }
 
@@ -217,24 +215,15 @@ public class MainTest extends ExecutionContext implements NotepadTest {
 
         System.out.println("I'm on edge DELETE SELECTED NOTE");
 
-        try {
-            String text = "Teste 1";
-            driver = DriverRunner.createDriver();
-            OpenPage openPage = new OpenPage(driver);
-            ListNotesEmpty listNotes = openPage.checkFirstDialog();
-            listNotes.IsListNotesEmpty();
-            CreateNote newNote = listNotes.CreateNewNote();
-            newNote.EnterText(text);
-            NoteDetails createdNote = newNote.SaveNewNote();
-            ListNotes createdNoteOnList = createdNote.GoBack(); 
-            NoteDetails noteToEdit = createdNoteOnList.SelectFirstNote();
-            noteToEdit.CancelDiscard();
-            noteToEdit.DiscardNote();
-
-        } catch (MalformedURLException exc) {
-            System.out.println(exc.getCause());
-            System.out.println(exc.getMessage());
-        }
+        noteDetailsPage.CancelDiscard();
+        if(numberOfNotes == 1){
+            noteDetailsPage.DiscardOnlyNote();
+            numberOfNotes--;
+        }else{
+            noteDetailsPage.DiscardNote();
+            numberOfNotes--;
+        }   
+        System.out.println("The number of notes was decreased to: " + numberOfNotes); 
 
     }
 
@@ -243,23 +232,7 @@ public class MainTest extends ExecutionContext implements NotepadTest {
 
         System.out.println("I'm on edge EDIT NOTE");
 
-        try {
-            String text = "Teste 1";
-            driver = DriverRunner.createDriver();
-            OpenPage openPage = new OpenPage(driver);
-            ListNotesEmpty listNotes = openPage.checkFirstDialog();
-            listNotes.IsListNotesEmpty();
-            CreateNote newNote = listNotes.CreateNewNote();
-            newNote.EnterText(text);
-            NoteDetails createdNote = newNote.SaveNewNote();
-            ListNotes createdNoteOnList = createdNote.GoBack(); 
-            NoteDetails noteToEdit = createdNoteOnList.SelectFirstNote();
-            noteToEdit.EditNote();
-
-        } catch (MalformedURLException exc) {
-            System.out.println(exc.getCause());
-            System.out.println(exc.getMessage());
-        }
+        noteDetailsPage.EditNote();
 
     }
 
@@ -269,24 +242,7 @@ public class MainTest extends ExecutionContext implements NotepadTest {
 
         System.out.println("I'm on edge GO BACK FROM EDITION");
 
-        try {
-            String text = "Teste 1";
-            driver = DriverRunner.createDriver();
-            OpenPage openPage = new OpenPage(driver);
-            ListNotesEmpty listNotes = openPage.checkFirstDialog();
-            listNotes.IsListNotesEmpty();
-            CreateNote newNote = listNotes.CreateNewNote();
-            newNote.EnterText(text);
-            NoteDetails createdNote = newNote.SaveNewNote();
-            ListNotes createdNoteOnList = createdNote.GoBack(); 
-            NoteDetails noteToEdit = createdNoteOnList.SelectFirstNote();
-            NoteEdition edit = noteToEdit.EditNote();
-            edit.GoBack();
-
-        } catch (MalformedURLException exc) {
-            System.out.println(exc.getCause());
-            System.out.println(exc.getMessage());
-        }
+        noteEditionPage.GoBack();
 
     }
 
@@ -295,25 +251,15 @@ public class MainTest extends ExecutionContext implements NotepadTest {
 
         System.out.println("I'm on edge DELETE EDITED NOTE");
 
-        try {
-            String text = "Teste 1";
-            driver = DriverRunner.createDriver();
-            OpenPage openPage = new OpenPage(driver);
-            ListNotesEmpty listNotes = openPage.checkFirstDialog();
-            listNotes.IsListNotesEmpty();
-            CreateNote newNote = listNotes.CreateNewNote();
-            newNote.EnterText(text);
-            NoteDetails createdNote = newNote.SaveNewNote();
-            ListNotes createdNoteOnList = createdNote.GoBack(); 
-            NoteDetails noteToEdit = createdNoteOnList.SelectFirstNote();
-            NoteEdition edit = noteToEdit.EditNote();
-            edit.CancelDiscard();
-            edit.DiscardNote();
-
-        } catch (MalformedURLException exc) {
-            System.out.println(exc.getCause());
-            System.out.println(exc.getMessage());
-        }
+        noteEditionPage.CancelDiscard();
+        if(numberOfNotes == 1){
+            noteEditionPage.DiscardOnlyNote();
+            numberOfNotes--;
+        }else{
+            noteEditionPage.DiscardNote();
+            numberOfNotes--;
+        }   
+        System.out.println("The number of notes was decreased to: " + numberOfNotes); 
 
     }
 
@@ -322,27 +268,19 @@ public class MainTest extends ExecutionContext implements NotepadTest {
 
         System.out.println("I'm on edge SAVE EDITED NOTE");
 
-        try {
-            String text1 = "Teste 1";
-            String text2 = "Teste 2";
-            driver = DriverRunner.createDriver();
-            OpenPage openPage = new OpenPage(driver);
-            ListNotesEmpty listNotes = openPage.checkFirstDialog();
-            listNotes.IsListNotesEmpty();
-            CreateNote newNote = listNotes.CreateNewNote();
-            newNote.EnterText(text1);
-            NoteDetails createdNote = newNote.SaveNewNote();
-            ListNotes createdNoteOnList = createdNote.GoBack(); 
-            NoteDetails noteToEdit = createdNoteOnList.SelectFirstNote();
-            NoteEdition edit = noteToEdit.EditNote();
-            edit.EnterText(text2);
-            edit.SaveEditedNote();
+        text = generateRandomText(textLength);
+        noteEditionPage.EnterText(text);
+        noteEditionPage.SaveEditedNote();
 
-        } catch (MalformedURLException exc) {
-            System.out.println(exc.getCause());
-            System.out.println(exc.getMessage());
-        }
+    }
 
+    public String generateRandomText(int textSize){
+        System.out.println("Generating random text of length " + textSize);
+        boolean useLetters = true;
+        boolean useNumbers = true;
+        String generatedText = RandomStringUtils.random(textSize, useLetters, useNumbers);
+        System.out.println("Generated text: " + generatedText);
+        return generatedText;
     }
 
 }

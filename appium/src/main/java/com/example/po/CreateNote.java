@@ -1,5 +1,6 @@
 package com.example.po;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.remote.RemoteWebElement;
 
 import io.appium.java_client.android.AndroidDriver;
@@ -11,9 +12,6 @@ public class CreateNote extends BasePage {
 
     @AndroidFindBy(uiAutomator="new UiSelector().text(\"Nova Nota\")")
     RemoteWebElement newNoteTitle;
-
-    @AndroidFindBy(uiAutomator="new UiSelector().text(\"Digite para inserir texto\")")
-    RemoteWebElement typeText;
 
     @AndroidFindBy(xpath="//android.widget.EditText")
     RemoteWebElement textField;
@@ -27,23 +25,11 @@ public class CreateNote extends BasePage {
     @AndroidFindBy(uiAutomator="new UiSelector().className(\"android.widget.Button\").instance(2)")
     RemoteWebElement trashButton;
 
-    @AndroidFindBy(uiAutomator="new UiSelector().className(\"android.view.View\").instance(2)")
-    RemoteWebElement androidDialog;
-
-    @AndroidFindBy(uiAutomator="new UiSelector().text(\"Apagar nota\")")
-    RemoteWebElement discardNoteText;
-
     @AndroidFindBy(uiAutomator="new UiSelector().className(\"android.widget.Button\").instance(0)")
     RemoteWebElement cancelConfirmationButton;
 
     @AndroidFindBy(uiAutomator="new UiSelector().className(\"android.widget.Button\").instance(1)")
     RemoteWebElement agreeConfirmationButton;
-
-    @AndroidFindBy(uiAutomator="new UiSelector().text(\"Para editar uma nota salva, toque duas vezes no texto ou clique no botão Editar (lápis)\")")
-    RemoteWebElement firstSavedNoteText;
-
-    @AndroidFindBy(uiAutomator="new UiSelector().className(\"android.widget.Button\")")
-    RemoteWebElement closeButton;
 
     // Driver instanciation
 
@@ -53,29 +39,32 @@ public class CreateNote extends BasePage {
 
     // PAGE ACTIONS
 
+    // Check Page --> Stay in the same page
+
+    public boolean NewNoteCheck(){
+        return newNoteTitle.isDisplayed();
+    }
+
     // Enter text --> Stay in the same page
 
     public void EnterText(String text){
-        System.out.println("Checking if user is in edit mode...");
-        if(typeText.isDisplayed() || textField.isDisplayed()){
-            System.out.println("User is in edition mode. Entering text: " + text);
-            //textField.click();
-            textField.sendKeys(text);
-        }else{
-            System.out.println("Action failed. Please go to edition mode to enter a text.");
-        }
+        System.out.println(" Entering text: " + text);
+        textField.sendKeys(text);
+    }
+
+     // Go back --> Go to list notes (empty)
+
+     public ListNotesEmpty GoBackToEmpty(){
+        System.out.println("Going back from note creation...");
+        backButton.click();
+        return new ListNotesEmpty(d);
     }
 
     // Go back --> Go to list notes
 
     public ListNotes GoBack(){
-        System.out.println("Go back from note creation...");
-        if(newNoteTitle.isDisplayed()){
-            System.out.println("Going back...");
-            backButton.click();
-        }else{
-            System.out.println("New Note title not found."); 
-        }
+        System.out.println("Going back from note creation...");
+        backButton.click();
         return new ListNotes(d);
     }
 
@@ -83,56 +72,45 @@ public class CreateNote extends BasePage {
 
     public void CancelDiscard(){
         System.out.println("Clicking to discard new note...");
-        if(newNoteTitle.isDisplayed()){
-            trashButton.click();
-            // Checking confirmation dialog
-            if(discardNoteText.isDisplayed() || androidDialog.isDisplayed()){
-                System.out.println("Canceling discard confirmation...");
-                cancelConfirmationButton.click();
-            }else{
-                System.out.println("Action failed. Discard was not confirmed.");
-            }
-        }else{
-            System.out.println("Action failed. Please select or create a new note to discard them.");            
-        }   
+        trashButton.click();
+        System.out.println("Canceling discard confirmation...");
+        cancelConfirmationButton.click();
     }  
 
-    // Discard -- Confirm discard --> Go to list notes
+     // Discard -- Confirm discard --> Go to list notes (empty)
+
+     public ListNotesEmpty DiscardNewFirstNote(){
+        System.out.println("Clicking to discard new note...");
+        trashButton.click();
+        System.out.println("Confirming discard...");
+        agreeConfirmationButton.click();
+        return new ListNotesEmpty(d);
+    } 
+
+    // Discard -- Confirm discard --> Go to list notes 
 
     public ListNotes DiscardNewNote(){
         System.out.println("Clicking to discard new note...");
-        if(newNoteTitle.isDisplayed()){
-            trashButton.click();
-            // Checking confirmation dialog
-            if(discardNoteText.isDisplayed() || androidDialog.isDisplayed()){
-                System.out.println("Confirming discard...");
-                agreeConfirmationButton.click();
-            }else{
-                System.out.println("Action failed. Discard was not confirmed.");
-            }
-        }else{
-            System.out.println("Action failed. Please select or create a new note to discard them.");            
-        } 
+        trashButton.click();
+        System.out.println("Confirming discard...");
+        agreeConfirmationButton.click();
         return new ListNotes(d);
     }    
 
     // Save --> Go to NOTE DETAILS
 
-    public NoteDetails SaveNewNote(){
+    public NoteDetails SaveNewNote(boolean isFirstNote){
         System.out.println("Clicking to save new note...");
-        if(newNoteTitle.isDisplayed()){
-            saveButton.click();
-            // Checking confirmation dialog
-            System.out.println("Checking if the android dialog popped up.");
-            if(firstSavedNoteText.isDisplayed() || androidDialog.isDisplayed()){
-                System.out.println("Closing android dialog...");
-                closeButton.click();
-            }else{
-                System.out.println("Android dialog not displayed.");
-            }
+        saveButton.click();
+        // Checking confirmation dialog
+        System.out.println("Checking if the android dialog popped up...");
+        if(isFirstNote){
+            System.out.println("Closing android dialog...");
+            RemoteWebElement closeAndroidDialog = (RemoteWebElement)d.findElement(By.xpath("//android.widget.Button"));
+            closeAndroidDialog.click();
         }else{
-            System.out.println("Action failed. Please select or create a new note to discard them.");            
-        } 
+            System.out.println("Android dialog not displayed.");
+        }
         return new NoteDetails(d);
     }
     

@@ -1,5 +1,6 @@
 package com.example.po;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.remote.RemoteWebElement;
 
 import io.appium.java_client.android.AndroidDriver;
@@ -12,10 +13,10 @@ public class NoteDetails extends BasePage {
     @AndroidFindBy(uiAutomator="new UiSelector().className(\"android.widget.Button\").instance(0)")
     RemoteWebElement backButton;
 
-    @AndroidFindBy(uiAutomator="new UiSelector().className(\"android.widget.Button\").instance(0)")
+    @AndroidFindBy(uiAutomator="new UiSelector().className(\"android.widget.Button\").instance(1)")
     RemoteWebElement editButton;
 
-    @AndroidFindBy(uiAutomator="new UiSelector().className(\"android.widget.Button\").instance(0)")
+    @AndroidFindBy(uiAutomator="new UiSelector().className(\"android.widget.Button\").instance(2)")
     RemoteWebElement trashButton;
 
     @AndroidFindBy(uiAutomator="new UiSelector().className(\"android.view.View\").instance(2)")
@@ -37,6 +38,13 @@ public class NoteDetails extends BasePage {
     }
 
     // PAGE ACTIONS
+
+    // Check Note Details
+    public void CheckNoteText(String s){
+        System.out.println("Checking note text...");
+        RemoteWebElement noteText = (RemoteWebElement)d.findElement(By.xpath("(//android.widget.TextView[@text=\""+s+"\"])[1]"));
+        System.out.println("Note text displayed: " + noteText.getText());
+    }
 
     // Go Back --> Go to list notes
 
@@ -60,7 +68,7 @@ public class NoteDetails extends BasePage {
         System.out.println("Clicking to discard new note...");
         trashButton.click();
         // Checking confirmation dialog
-        if(discardNoteText.isDisplayed() || androidDialog.isDisplayed()){
+        if(discardNoteText.isDisplayed()){
             System.out.println("Canceling discard confirmation...");
             cancelConfirmationButton.click();
         }else{
@@ -74,7 +82,7 @@ public class NoteDetails extends BasePage {
         System.out.println("Clicking to discard new note...");
         trashButton.click();
         // Checking confirmation dialog
-        if(discardNoteText.isDisplayed() || androidDialog.isDisplayed()){
+        if(discardNoteText.isDisplayed()){
             System.out.println("Confirming discard...");
             agreeConfirmationButton.click();
         }else{
@@ -82,5 +90,20 @@ public class NoteDetails extends BasePage {
         } 
         return new ListNotes(d);
     }    
+
+    // Discard -- Confirm discard --> Go to list notes
+
+    public ListNotesEmpty DiscardOnlyNote(){
+        System.out.println("Clicking to discard new note...");
+        trashButton.click();
+        // Checking confirmation dialog
+        if(discardNoteText.isDisplayed() || androidDialog.isDisplayed()){
+            System.out.println("Confirming discard...");
+            agreeConfirmationButton.click();
+        }else{
+            System.out.println("Action failed. Discard was not confirmed.");
+        } 
+        return new ListNotesEmpty(d);
+    }   
 
 }

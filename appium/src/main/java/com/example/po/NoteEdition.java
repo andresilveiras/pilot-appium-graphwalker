@@ -21,11 +21,8 @@ public class NoteEdition extends BasePage {
     @AndroidFindBy(uiAutomator="new UiSelector().className(\"android.widget.Button\").instance(2)")
     RemoteWebElement trashButton;
 
-    @AndroidFindBy(xpath="//android.view.ViewGroup/android.view.View/android.view.View/android.view.View")
+    @AndroidFindBy(uiAutomator="new UiSelector().className(\"android.view.View\").instance(2)")
     RemoteWebElement androidDialog;
-
-    @AndroidFindBy(uiAutomator="new UiSelector().text(\"Apagar nota\")")
-    RemoteWebElement discardNoteText;
 
     @AndroidFindBy(uiAutomator="new UiSelector().className(\"android.widget.Button\").instance(0)")
     RemoteWebElement cancelConfirmationButton;
@@ -42,16 +39,17 @@ public class NoteEdition extends BasePage {
 
     // PAGE ACTIONS
 
+    // Edition mode Check
+    public boolean EditionModeCheck(){
+        System.out.println("Checking if user is in edition mode...\n" + textField.isDisplayed());
+        return textField.isDisplayed();
+    }
+
     // Enter text --> Stay in the same page
 
     public void EnterText(String text){
-        System.out.println("Checking if user is in edit mode...");
-        if(textField.isDisplayed()){
-            System.out.println("User is in edition mode. Entering text: " + text);
-            textField.sendKeys(text);
-        }else{
-            System.out.println("Action failed. Please go to edition mode to enter a text.");
-        }
+        System.out.println("Entering text: " + text);
+        textField.sendKeys(text);
     }
 
     // Go back --> Go to list notes
@@ -68,7 +66,7 @@ public class NoteEdition extends BasePage {
         System.out.println("Clicking to discard note...");
         trashButton.click();
         // Checking confirmation dialog
-        if(discardNoteText.isDisplayed() || androidDialog.isDisplayed()){
+        if(androidDialog.isDisplayed()){
             System.out.println("Canceling discard confirmation...");
             cancelConfirmationButton.click();
         }else{
@@ -82,14 +80,29 @@ public class NoteEdition extends BasePage {
         System.out.println("Clicking to discard note...");
         trashButton.click();
         // Checking confirmation dialog
-        if(discardNoteText.isDisplayed() || androidDialog.isDisplayed()){
+        if(androidDialog.isDisplayed()){
             System.out.println("Confirming discard...");
             agreeConfirmationButton.click();
         }else{
             System.out.println("Action failed. Discard was not confirmed.");
         }
         return new ListNotes(d);
-    }    
+    }   
+    
+     // Discard -- Confirm discard --> Go to list notes (empty)
+
+     public ListNotesEmpty DiscardOnlyNote(){
+        System.out.println("Clicking to discard note...");
+        trashButton.click();
+        // Checking confirmation dialog
+        if(androidDialog.isDisplayed()){
+            System.out.println("Confirming discard...");
+            agreeConfirmationButton.click();
+        }else{
+            System.out.println("Action failed. Discard was not confirmed.");
+        }
+        return new ListNotesEmpty(d);
+    }  
 
     // Save --> Go to NOTE DETAILS
 
