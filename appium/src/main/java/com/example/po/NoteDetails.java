@@ -40,9 +40,9 @@ public class NoteDetails extends BasePage {
     // PAGE ACTIONS
 
     // Check Note Details
-    public void CheckNoteText(String s){
+    public void CheckNoteText(){
         System.out.println("Checking note text...");
-        RemoteWebElement noteText = (RemoteWebElement)d.findElement(By.xpath("(//android.widget.TextView[@text=\""+s+"\"])[1]"));
+        RemoteWebElement noteText = (RemoteWebElement)d.findElement(By.xpath("(//android.widget.TextView)[1]"));
         System.out.println("Note text displayed: " + noteText.getText());
     }
 

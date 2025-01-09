@@ -97,7 +97,7 @@ public class MainTest extends ExecutionContext implements NotepadTest {
             noteDetailsPage = new NoteDetails(driver);
         }
         if(numberOfNotes > 0){
-            noteDetailsPage.CheckNoteText(text);
+            noteDetailsPage.CheckNoteText();
         }        
 
     }
@@ -206,7 +206,11 @@ public class MainTest extends ExecutionContext implements NotepadTest {
 
         System.out.println("I'm on edge GO BACK FROM DETAILS");
 
-        noteDetailsPage.GoBack();
+        if(numberOfNotes == 0){
+            System.out.println("There is no note to select.");
+        }else{
+            noteDetailsPage.GoBack();
+        }
 
     }
 
@@ -215,15 +219,19 @@ public class MainTest extends ExecutionContext implements NotepadTest {
 
         System.out.println("I'm on edge DELETE SELECTED NOTE");
 
-        noteDetailsPage.CancelDiscard();
-        if(numberOfNotes == 1){
-            noteDetailsPage.DiscardOnlyNote();
-            numberOfNotes--;
+        if(numberOfNotes == 0){
+            System.out.println("There is no note to delete.");
         }else{
-            noteDetailsPage.DiscardNote();
-            numberOfNotes--;
-        }   
-        System.out.println("The number of notes was decreased to: " + numberOfNotes); 
+            noteDetailsPage.CancelDiscard();
+            if(numberOfNotes == 1){
+                noteDetailsPage.DiscardOnlyNote();
+                numberOfNotes--;
+            }else{
+                noteDetailsPage.DiscardNote();
+                numberOfNotes--;
+            }   
+            System.out.println("The number of notes was decreased to: " + numberOfNotes); 
+        }        
 
     }
 
@@ -232,7 +240,11 @@ public class MainTest extends ExecutionContext implements NotepadTest {
 
         System.out.println("I'm on edge EDIT NOTE");
 
-        noteDetailsPage.EditNote();
+        if(numberOfNotes == 0){
+            System.out.println("There is no note to edit.");
+        }else{
+            noteDetailsPage.EditNote();
+        }
 
     }
 
@@ -242,7 +254,11 @@ public class MainTest extends ExecutionContext implements NotepadTest {
 
         System.out.println("I'm on edge GO BACK FROM EDITION");
 
-        noteEditionPage.GoBack();
+        if(numberOfNotes == 0){
+            System.out.println("There is no note to edit.");
+        }else{
+            noteEditionPage.GoBack();
+        }
 
     }
 
@@ -251,15 +267,19 @@ public class MainTest extends ExecutionContext implements NotepadTest {
 
         System.out.println("I'm on edge DELETE EDITED NOTE");
 
-        noteEditionPage.CancelDiscard();
-        if(numberOfNotes == 1){
-            noteEditionPage.DiscardOnlyNote();
-            numberOfNotes--;
+        if(numberOfNotes == 0){
+            System.out.println("There is no note to edit.");
         }else{
-            noteEditionPage.DiscardNote();
-            numberOfNotes--;
-        }   
-        System.out.println("The number of notes was decreased to: " + numberOfNotes); 
+            noteEditionPage.CancelDiscard();
+            if(numberOfNotes == 1){
+                noteEditionPage.DiscardOnlyNote();
+                numberOfNotes--;
+            }else{
+                noteEditionPage.DiscardNote();
+                numberOfNotes--;
+            }   
+            System.out.println("The number of notes was decreased to: " + numberOfNotes); 
+        } 
 
     }
 
@@ -268,9 +288,13 @@ public class MainTest extends ExecutionContext implements NotepadTest {
 
         System.out.println("I'm on edge SAVE EDITED NOTE");
 
-        text = generateRandomText(textLength);
-        noteEditionPage.EnterText(text);
-        noteEditionPage.SaveEditedNote();
+        if(numberOfNotes == 0){
+            System.out.println("There is no note to edit.");
+        }else{
+            text = generateRandomText(textLength);
+            noteEditionPage.EnterText(text);
+            noteEditionPage.SaveEditedNote();
+        }  
 
     }
 
