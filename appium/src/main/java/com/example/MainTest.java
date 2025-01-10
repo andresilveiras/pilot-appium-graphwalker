@@ -98,6 +98,8 @@ public class MainTest extends ExecutionContext implements NotepadTest {
         }
         if(numberOfNotes > 0){
             noteDetailsPage.CheckNoteText();
+        }else{
+            System.out.println("There is no note to select.");
         }        
 
     }
@@ -112,7 +114,9 @@ public class MainTest extends ExecutionContext implements NotepadTest {
         }
         if(numberOfNotes > 0){
             noteEditionPage.EditionModeCheck();
-        }
+        }else{
+            System.out.println("There is no note to select.");
+        } 
     }
 
 
