@@ -49,6 +49,13 @@ OBS: Os comandos de terminal funcionam para todos os SO da máquina: Windows, Li
 - Inicie o server appium abrindo um terminal à parte, digitando o comando `appium`
 - Se estiver com o server do appium aberto e visualizando a tela do dispositivo, abra o terminal que rodou o maven e digite o comando `mvn org.graphwalker:graphwalker-maven-plugin:test`
 
+MODELO:
+
+![modelo-piloto](https://github.com/user-attachments/assets/f86c5e8c-0099-4e1a-bd53-bf70605206f4)
+
+Disponível no diretório src/main/resources
+NotepadTestModel_v1.json
+
 CRÉDITOS:
 
 Repositório do SUT utilizado: https://github.com/farmerbb/Notepad
