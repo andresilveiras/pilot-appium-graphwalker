@@ -60,7 +60,11 @@ Este projeto demonstra a implementação de testes automatizados para aplicaçõ
    git clone [URL do repositório]
    ```
 
-2. Configurar variáveis do dispositivo em `DriverRunner.java`:
+2. Verificar dados do dispositivo (físico ou emulado):
+   ```bash
+   adb devices
+
+3. Configurar variáveis do dispositivo em `DriverRunner.java`:
    - `appPath`: Diretório do repositório clonado
    - `deviceName`: Nome do dispositivo
    - `deviceUdid`: UDID do dispositivo
@@ -152,7 +156,11 @@ This project demonstrates the implementation of automated testing for mobile app
    git clone [repository URL]
    ```
 
-2. Configure device variables in `DriverRunner.java`:
+2. Verify device data:
+   ```bash
+   adb devices
+
+3. Configure device variables in `DriverRunner.java`:
    - `appPath`: Cloned repository directory
    - `deviceName`: Device name
    - `deviceUdid`: Device UDID
