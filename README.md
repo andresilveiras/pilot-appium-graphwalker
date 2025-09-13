@@ -1,116 +1,185 @@
-[PT-BR] - English bellow
+# Projeto Piloto: Automação de Testes Móveis com Model-Based Testing
 
-Projeto piloto para o estudo de caso: uso de Teste Baseado em Modelo na automação de testes em aplicativos móveis
+[🇧🇷 Português](#português) | [🇺🇸 English](#english)
 
-- Ferramenta de automação: Appium (v2.12.0)
-- Ferramenta de TBM: GraphWalker (v4.3.3)
-- Linguagem de programação utilizada: Java (jdk v21.0.5)
+## Português
 
-Este projeto pode ser executado tanto em máquinas Windows quanto Linux e Mac, os dispositivos onde irá rodar o SUT (System Under Test) devem ser Android
+### Visão Geral
+Este projeto demonstra a implementação de testes automatizados para aplicações móveis utilizando a abordagem de Model-Based Testing (MBT). O projeto serve como um estudo de caso prático para avaliar a eficácia desta metodologia na automação de testes mobile.
 
-Como executar o projeto?
+### Stack Tecnológica
+- **Framework de Automação**: Appium v2.12.0
+- **Ferramenta MBT**: GraphWalker v4.3.3
+- **Linguagem**: Java (JDK 21.0.5)
+- **Compatibilidade**: Windows, Linux e macOS
+- **Plataforma de Teste**: Android
 
-Pré-Requisitos:
+### Pré-requisitos
 
-- Instale o GIT e a IDE de sua preferência (caso por algum estranho motivo você ainda não tenha feito rsrs)
-- OBS: Caso utilize a IDE Visual Studio Code, instale a extensão "Extension Pack for Java", da Microsoft, possui todas as extensões necessárias para rodar este projeto 
-- Instalar o Java na máquina e configurar as variáveis de ambiente necessárias (https://www.oracle.com/java/technologies/downloads/)
-- NOTA: Na minha máquina apenas funcionou com a versão 21 do Java, versões posteriores a 22 causa falha de instanciação, então recomendo o uso da versão 21 do jdk
-- Instalar o Maven na máquina e configurar as variáveis de ambiente necessárias - DEVE SER FEITO APÓS A INSTALAÇÃO E CONFIGURAÇÃO DO JAVA (https://maven.apache.org/install.html)
-- Fazer a instalação do Android Studio e ferramentas ADB na máquina (https://developer.android.com/tools/adb)
-- Fazer a instalação do Appium na máquina - requer Node.JS (https://appium.io/docs/en/2.2/quickstart/install/)
-- Após instalar o appium, instale o driver uiautomator2 para os testes no android (https://appium.io/docs/en/2.2/quickstart/uiauto2-driver/)
-- Opcional: Instale tambem o Appium Inspector (https://github.com/appium/appium-inspector)
-- Fazer a instalação do GraphWalker (https://graphwalker.github.io/)
-- Fazer a instalação do apk disponível no src/main/resources no dispositivo utilizado no teste (necessário habilitar a instalação de app fora da Play Store no Android)
+#### Ferramentas de Desenvolvimento
+1. Git
+2. IDE de sua preferência
+   - Para Visual Studio Code: Instalar "Extension Pack for Java" da Microsoft
+3. Java JDK 21.0.5
+   - [Download e instruções de instalação](https://www.oracle.com/java/technologies/downloads/)
+   - **Importante**: Versão 21 recomendada devido a problemas de compatibilidade com versões posteriores
+4. Maven
+   - [Guia de instalação](https://maven.apache.org/install.html)
+   - Configurar após a instalação do Java
 
-O teste pode ser feito tanto em dispositivo físico quanto emulado pelo Android Studio
+#### Ambiente Android
+1. Android Studio e ADB
+   - [Download e configuração do ADB](https://developer.android.com/tools/adb)
+2. Appium
+   - Requer Node.js
+   - [Guia de instalação](https://appium.io/docs/en/2.2/quickstart/install/)
+3. Driver UIAutomator2
+   - [Instruções de instalação](https://appium.io/docs/en/2.2/quickstart/uiauto2-driver/)
+4. Appium Inspector (opcional)
+   - [Download](https://github.com/appium/appium-inspector)
+5. GraphWalker
+   - [Instalação e documentação](https://graphwalker.github.io/)
 
-No caso do dispositivo físico:
+### Configuração do Dispositivo
 
-- Desbloquear o modo desenvolvedor no dispositivo (pesquisar como é feito no dispositivo que você tem, pode variar de modelo para modelo)
-- Ativar o modo DEBUG nas opções de desenvolvedor
-- Conectar o dispositivo à máquina via USB (ativar compartilhamento de mídia)
-- Ativar a permissão do Appium ao modo debug do dispositivo
+#### Para Dispositivo Físico
+1. Ativar modo desenvolvedor
+2. Habilitar depuração USB
+3. Conectar via USB com compartilhamento de mídia
+4. Configurar permissões do Appium
+5. Instalar APK do aplicativo (disponível em `src/main/resources`)
+   - Necessário habilitar instalação de fontes desconhecidas
 
-IMPORTANTE: Antes de rodar o código, é necessário editar as variáveis para o dispositivo que você irá utilizar, tanto para dispositivo físico quando emulado. As variáveis estão na classe DriverRunner.java
+#### Para Emulador
+- Configurar dispositivo virtual via Android Studio
 
-Para executar o código:
+### Configuração do Projeto
 
-OBS: Os comandos de terminal funcionam para todos os SO da máquina: Windows, Linux e Mac
+1. Clonar o repositório:
+   ```bash
+   git clone [URL do repositório]
+   ```
 
-- git clone ~ este projeto ~
-- Entre na classe 'DriverRunner.java' e altere a variável appPath com o diretório onde você clonou o repositório
-- Conecte o dispositivo à máquina, ou abra o dispositivo no emulador, e rode o comando `adb devices` no terminal
-- Altere as variáveis String deviceName ; String deviceUdid ; String deviceOSVersion com os dados do aparelho que irá utilizar
-- Salve as alterações (Ctrl + S)
-- No terminal, entre na pasta onde está o POM e digite o comando `mvn clean install` (irá instalar as dependências e compilar as classes)
-- Recomendado caso esteja testando em dispositivo físico: Espelhe a tela do disposivo pelo app Vysor (https://www.vysor.io/)
-- Inicie o server appium abrindo um terminal à parte, digitando o comando `appium`
-- Se estiver com o server do appium aberto e visualizando a tela do dispositivo, abra o terminal que rodou o maven e digite o comando `mvn org.graphwalker:graphwalker-maven-plugin:test`
+2. Configurar variáveis do dispositivo em `DriverRunner.java`:
+   - `appPath`: Diretório do repositório clonado
+   - `deviceName`: Nome do dispositivo
+   - `deviceUdid`: UDID do dispositivo
+   - `deviceOSVersion`: Versão do Android
 
-MODELO:
+### Execução dos Testes
 
-![modelo-piloto](https://github.com/user-attachments/assets/f86c5e8c-0099-4e1a-bd53-bf70605206f4)
+1. Instalar dependências:
+   ```bash
+   mvn clean install
+   ```
 
-Disponível no diretório src/main/resources
-NotepadTestModel_v1.json
+2. Iniciar servidor Appium:
+   ```bash
+   appium
+   ```
 
-CRÉDITOS:
+3. Para dispositivos físicos:
+   - Recomendado: Usar [Vysor](https://www.vysor.io/) para espelhamento
 
-Repositório do SUT utilizado: https://github.com/farmerbb/Notepad
+4. Executar testes:
+   ```bash
+   mvn org.graphwalker:graphwalker-maven-plugin:test
+   ```
 
-[ENG]
+### Modelo de Testes
+![Modelo de Testes](https://github.com/user-attachments/assets/f86c5e8c-0099-4e1a-bd53-bf70605206f4)
 
-Pilot project for the case study: use of Model-Based Testing in test automation of mobile applications 
+O modelo completo está disponível em `src/main/resources/NotepadTestModel_v1.json`
 
-- Automation tool: Appium (v2.12.0)
-- MBT tool: GraphWalker (v4.3.3)
-- Programming language: Java (jdk v21.0.5)
+### Créditos
+- Sistema sob teste (SUT): [Notepad by farmerBB](https://github.com/farmerbb/Notepad)
 
-This project can run on Windows, Linux and Mac machines, the devices where the SUT (System Under Test) will run must be Android
+## English
 
-How to run this project?
+### Overview
+This project demonstrates the implementation of automated testing for mobile applications using the Model-Based Testing (MBT) approach. It serves as a practical case study to evaluate the effectiveness of this methodology in mobile test automation.
 
-Prerequisites: 
+### Technology Stack
+- **Automation Framework**: Appium v2.12.0
+- **MBT Tool**: GraphWalker v4.3.3
+- **Language**: Java (JDK 21.0.5)
+- **Compatibility**: Windows, Linux, and macOS
+- **Testing Platform**: Android
 
-- Install GIT and an IDE of your choice (if for some strange reason you haven't done it yet)
-- NOTE: If you choose to use Visual Studio Code IDE, install the "Extension Pack for Java" extension from Microsoft, it has everything necessary to run this project
-- Install Java on your machine and configure the environment variables (https://www.oracle.com/java/technologies/downloads/)
-- NOTE: In my machine, posterior versions than 22 of Java caused instantiation errors, so I recommend the use of version 21 of jdk
-- Install Maven on your machine and configure the environment variables - NEEDS TO BE DONE AFTER JAVA INSTALLATION (https://maven.apache.org/install.html)
-- Install Android Studio and ADB tools on your machine (https://developer.android.com/tools/adb)
-- Install Appium on your machine - requires Node.JS (https://appium.io/docs/en/2.2/quickstart/install/)
-- After installing Appium, install the uiautomator2 driver for testing on Android (https://appium.io/docs/en/2.2/quickstart/uiauto2-driver/)
-- Optional: Also install Appium Inspector (https://github.com/appium/appium-inspector)
-- Install GraphWalker (https://graphwalker.github.io/)
-- Install the apk available in src/main/resources on the device used in the test (it is necessary to enable the installation of applications outside the Play Store on Android)
+### Prerequisites
 
-The test can be done both on a physical device and one emulated by Android Studio 
+#### Development Tools
+1. Git
+2. IDE of your choice
+   - For Visual Studio Code: Install Microsoft's "Extension Pack for Java"
+3. Java JDK 21.0.5
+   - [Download and installation instructions](https://www.oracle.com/java/technologies/downloads/)
+   - **Important**: Version 21 recommended due to compatibility issues with newer versions
+4. Maven
+   - [Installation guide](https://maven.apache.org/install.html)
+   - Configure after Java installation
 
-In the case of using physical device: 
+#### Android Environment
+1. Android Studio and ADB
+   - [ADB download and setup](https://developer.android.com/tools/adb)
+2. Appium
+   - Requires Node.js
+   - [Installation guide](https://appium.io/docs/en/2.2/quickstart/install/)
+3. UIAutomator2 Driver
+   - [Installation instructions](https://appium.io/docs/en/2.2/quickstart/uiauto2-driver/)
+4. Appium Inspector (optional)
+   - [Download](https://github.com/appium/appium-inspector)
+5. GraphWalker
+   - [Installation and documentation](https://graphwalker.github.io/)
 
-- Unlock developer mode on the device (research how to do it on the device you have, it may vary from model to model)
-- Enable DEBUG mode in the developer options
-- Connect the device to the machine via USB (enable media sharing)
-- Enable Appium's permission to the device's debug mode
+### Device Setup
 
-IMPORTANT: Before running the code, it is necessary to edit the device variables for the device you will use, for both the physical and emulated device. The variables are located in DriverRunner.java
+#### For Physical Device
+1. Enable developer mode
+2. Enable USB debugging
+3. Connect via USB with media sharing enabled
+4. Configure Appium permissions
+5. Install app APK (available in `src/main/resources`)
+   - Must enable installation from unknown sources
 
-To run the code: 
+#### For Emulator
+- Set up virtual device via Android Studio
 
-NOTE: The terminal commands work for all machine OS: Windows, Linux and Mac 
+### Project Setup
 
-- git clone ~ this project ~
-- Enter on 'DriverRunner.java' class and change the appPath variable updating it with the directory where you cloned the repository
-- Connect the device to the machine, or open the device in the emulator, and run command `adb devices`  in the terminal
-- Change the variables String deviceName ; String deviceUdid ; String deviceOSVersion with the data of the device you will use
-- Save changes (Ctrl + S)
-- In the terminal, go to the folder where the POM file is located and run command `mvn clean install` (it will install the dependencies and compile the classes)
-- Recommended if you are testing on a physical device: Mirror the device's screen through the Vysor app (https://www.vysor.io/)
-- Start the appium server by opening a separate terminal and run command `appium` 
-- If you have appium server running and are viewing the device's screen, open the terminal that ran maven and type the command `mvn org.graphwalker:graphwalker-maven-plugin:test`
+1. Clone the repository:
+   ```bash
+   git clone [repository URL]
+   ```
 
-CREDITS:
+2. Configure device variables in `DriverRunner.java`:
+   - `appPath`: Cloned repository directory
+   - `deviceName`: Device name
+   - `deviceUdid`: Device UDID
+   - `deviceOSVersion`: Android version
 
-- Repository of the SUT used in this project: https://github.com/farmerbb/Notepad
+### Running Tests
+
+1. Install dependencies:
+   ```bash
+   mvn clean install
+   ```
+
+2. Start Appium server:
+   ```bash
+   appium
+   ```
+
+3. For physical devices:
+   - Recommended: Use [Vysor](https://www.vysor.io/) for screen mirroring
+
+4. Execute tests:
+   ```bash
+   mvn org.graphwalker:graphwalker-maven-plugin:test
+   ```
+
+### Test Model
+The complete model is available at `src/main/resources/NotepadTestModel_v1.json`
+
+### Credits
+- System Under Test (SUT): [Notepad by farmerBB](https://github.com/farmerbb/Notepad)
