@@ -43,9 +43,9 @@ Este projeto demonstra a implementação de testes automatizados para aplicaçõ
 ### Configuração do Dispositivo
 
 #### Para Dispositivo Físico
-1. Ativar modo desenvolvedor
+1. Ativar modo desenvolvedor (verificar como é feito no seu aparelho, pois pode variar de modelo para modelo)
 2. Habilitar depuração USB
-3. Conectar via USB com compartilhamento de mídia
+3. Conectar ao computador via USB com compartilhamento de mídia
 4. Configurar permissões do Appium
 5. Instalar APK do aplicativo (disponível em `src/main/resources`)
    - Necessário habilitar instalação de fontes desconhecidas
@@ -72,12 +72,12 @@ Este projeto demonstra a implementação de testes automatizados para aplicaçõ
 
 ### Execução dos Testes
 
-1. Instalar dependências:
+1. Instalar dependências (no terminal, entrar no diretório onde está o POM):
    ```bash
    mvn clean install
    ```
 
-2. Iniciar servidor Appium:
+2. Iniciar servidor Appium (em um terminal à parte, irá executar em segundo plano):
    ```bash
    appium
    ```
@@ -139,9 +139,9 @@ This project demonstrates the implementation of automated testing for mobile app
 ### Device Setup
 
 #### For Physical Device
-1. Enable developer mode
+1. Enable developer mode (search how to do it in your device, because it varies from model to model)
 2. Enable USB debugging
-3. Connect via USB with media sharing enabled
+3. Connect to your PC via USB with media sharing enabled
 4. Configure Appium permissions
 5. Install app APK (available in `src/main/resources`)
    - Must enable installation from unknown sources
@@ -168,12 +168,12 @@ This project demonstrates the implementation of automated testing for mobile app
 
 ### Running Tests
 
-1. Install dependencies:
+1. Install dependencies (run this in a terminal in the folder where POM is located):
    ```bash
    mvn clean install
    ```
 
-2. Start Appium server:
+2. Start Appium server (run this in a separate terminal):
    ```bash
    appium
    ```
